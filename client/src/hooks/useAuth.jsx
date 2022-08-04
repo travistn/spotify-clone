@@ -10,11 +10,11 @@ const useAuth = (code) => {
     (async () => {
       try {
         const {
-          data: { accessToken, refreshToken, expiresIn },
+          data: { access_token, refresh_token, expires_in },
         } = await axios.post(`${process.env.REACT_APP_BASE_URL}/login`, { code });
-        setAccessToken(accessToken);
-        setRefreshToken(refreshToken);
-        setExpiresIn(expiresIn);
+        setAccessToken(access_token);
+        setRefreshToken(refresh_token);
+        setExpiresIn(expires_in);
         window.history.pushState({}, null, '/');
       } catch {
         window.location = '/';
@@ -28,10 +28,10 @@ const useAuth = (code) => {
     const interval = setInterval(async () => {
       try {
         const {
-          data: { accessToken, expiresIn },
+          data: { access_token, expires_in },
         } = await axios.post(`${process.env.REACT_APP_BASE_URL}/refresh`, { refreshToken });
-        setAccessToken(accessToken);
-        setExpiresIn(expiresIn);
+        setAccessToken(access_token);
+        setExpiresIn(expires_in);
       } catch {
         window.location = '/';
       }
