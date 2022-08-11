@@ -38,7 +38,7 @@
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background-color: #00d76b;
+  background-color: var(--color-green);
 }
 
 .login-button a {
