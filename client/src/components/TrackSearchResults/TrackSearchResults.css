@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 1rem;
+  width: 500px;
 }
 
 .track:hover {
@@ -24,6 +25,7 @@
 .track-details h4 {
   font-size: 15px;
   font-weight: 400;
+  color: white;
 }
 
 .track-details h5 {
