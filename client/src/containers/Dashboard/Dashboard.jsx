@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 
 import './Dashboard.css';
@@ -57,17 +57,17 @@ const Dashboard = ({ code }) => {
   }, [search, accessToken]);
 
   return (
-    <div>
-      <Search search={search} setSearch={setSearch} />
-      <div>
-        {searchResults.map((track) => (
-          <TrackSearchResults track={track} key={track.uri} chooseTrack={chooseTrack} />
-        ))}
+    <>
+      <div className='dashboard__container'>
+        <Search search={search} setSearch={setSearch} />
+        <div className='dashboard-searchResults'>
+          {searchResults.map((track) => (
+            <TrackSearchResults track={track} key={track.uri} chooseTrack={chooseTrack} />
+          ))}
+        </div>
       </div>
-      <div>
-        <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
-      </div>
-    </div>
+      <Player accessToken={accessToken} track={playingTrack} spotifyApi={spotifyApi} />
+    </>
   );
 };
 
