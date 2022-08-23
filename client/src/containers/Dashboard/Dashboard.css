@@ -1,17 +1,9 @@
 .dashboard__container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   width: 100%;
   height: 100vh;
   position: relative;
-  background-color: black;
-}
-
-.dashboard-searchResults {
-  overflow: scroll;
-}
-
-.dashboard-searchResults::-webkit-scrollbar {
-  display: none;
+  background-color: var(--color-black);
 }
