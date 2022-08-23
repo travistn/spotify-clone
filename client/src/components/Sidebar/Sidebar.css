@@ -9,6 +9,7 @@
 
 .sidebar-logo {
   width: 150px;
+  cursor: pointer;
 }
 
 .sidebar__links {
