@@ -1,0 +1,11 @@
+.search__container {
+  color: white;
+}
+
+.search-results {
+  overflow: scroll;
+}
+
+.search-results::-webkit-scrollbar {
+  display: none;
+}
