@@ -1,0 +1,45 @@
+.sidebar__container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  height: 100vh;
+  width: 250px;
+  background-color: black;
+}
+
+.sidebar-logo {
+  width: 150px;
+}
+
+.sidebar__links {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-gray);
+  margin-top: 2rem;
+  margin-left: 0.3rem;
+  gap: 1.5rem;
+}
+
+.sidebar-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar__links h5 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.sidebar-homeIcon {
+  font-size: 26px;
+}
+
+.sidebar-searchIcon {
+  font-size: 25px;
+}
+
+.sidebar-libraryIcon {
+  font-size: 24px;
+}
