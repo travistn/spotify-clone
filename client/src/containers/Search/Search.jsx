@@ -43,7 +43,9 @@ const Search = ({ setPlayingTrack }) => {
 
   return (
     <div className='search__container'>
-      <Searchbar search={search} setSearch={setSearch} />
+      <div className='searchBar__container'>
+        <Searchbar search={search} setSearch={setSearch} />
+      </div>
       <div className='search-results'>
         {searchResults.map((track) => (
           <TrackSearchResults track={track} key={track.uri} chooseTrack={chooseTrack} />

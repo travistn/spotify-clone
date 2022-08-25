@@ -1,13 +1,21 @@
-.search__container {
+.searchBar {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.search__container input {
-  width: 400px;
+.searchBar input {
+  width: 350px;
   height: 40px;
   padding: 1rem;
   border-style: none;
   border: 1px solid gray;
+  border-radius: 20px;
+}
+.searchBar input[type='search'] {
+  font-size: 16px;
+}
+
+.searchBar input:focus {
+  outline: none;
 }

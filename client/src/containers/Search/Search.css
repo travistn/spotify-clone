@@ -1,8 +1,17 @@
 .search__container {
-  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchBar__container {
+  margin-left: 3rem;
+  margin-top: 1rem;
+  width: 350px;
 }
 
 .search-results {
+  margin-top: 2rem;
+  margin-left: 3rem;
   overflow: scroll;
 }
 
