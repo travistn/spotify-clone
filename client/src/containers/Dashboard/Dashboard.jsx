@@ -15,6 +15,7 @@ const Dashboard = ({ code }) => {
   const [playingTrack, setPlayingTrack] = useState();
   const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState();
   const [newReleases, setNewReleases] = useState();
+  const [myTopArtists, setMyTopArtists] = useState();
 
   useEffect(() => {
     if (!accessToken) return;
@@ -34,6 +35,10 @@ const Dashboard = ({ code }) => {
       .then((res) => setNewReleases(res.body.albums.items));
   }, [accessToken]);
 
+  useEffect(() => {
+    spotifyApi.getMyTopArtists({ limit: 7 }).then((res) => setMyTopArtists(res.body.items));
+  }, [accessToken]);
+
   return (
     <>
       <div className='dashboard__container'>
@@ -41,7 +46,13 @@ const Dashboard = ({ code }) => {
         <Routes>
           <Route
             path='/'
-            element={<Home recentlyPlayedTracks={recentlyPlayedTracks} newReleases={newReleases} />}
+            element={
+              <Home
+                recentlyPlayedTracks={recentlyPlayedTracks}
+                newReleases={newReleases}
+                myTopArtists={myTopArtists}
+              />
+            }
           />
           <Route path='/search' element={<Search setPlayingTrack={setPlayingTrack} />} />
         </Routes>

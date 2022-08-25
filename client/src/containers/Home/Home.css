@@ -3,6 +3,12 @@
   flex-direction: column;
   padding: 2rem;
   gap: 3rem;
+  margin-bottom: 6rem;
+  overflow-y: scroll;
+}
+
+.home__container::-webkit-scrollbar {
+  display: none;
 }
 
 .home-header h2 {
@@ -22,6 +28,23 @@
 }
 
 .home-newReleases {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.home-topArtist__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-topArtist__container h3 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.home-topArtist {
   display: flex;
   flex-direction: row;
   gap: 2rem;
