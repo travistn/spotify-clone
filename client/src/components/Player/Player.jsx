@@ -1,16 +1,12 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
-import { AppContext } from '../../contexts/AppContext';
 
 import './Player.css';
 
 const Player = ({ accessToken, track }) => {
   const [play, setPlay] = useState(false);
-  const { playingTrack } = useContext(AppContext);
 
-  console.log(playingTrack);
-
-  useEffect(() => setPlay(true), [playingTrack?.uri]);
+  useEffect(() => setPlay(true), [track?.uri]);
 
   if (!accessToken) return null;
   return (
@@ -22,7 +18,7 @@ const Player = ({ accessToken, track }) => {
           if (!state.isPlaying) setPlay(false);
         }}
         play={play}
-        uris={playingTrack?.uri ? [playingTrack?.uri] : []}
+        uris={track?.uri ? [track?.uri] : []}
         styles={{
           bgColor: '#181818',
           color: 'white',
