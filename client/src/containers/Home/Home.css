@@ -1,0 +1,46 @@
+.home__container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.home-header h2 {
+  color: white;
+  font-size: 30px;
+}
+
+.home-newReleases__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.home-newReleases__container h3 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.home-newReleases {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.home-recentlyPlayed__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.home-recentlyPlayed__container h3 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.home-recentlyPlayed {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
