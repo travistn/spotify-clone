@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  gap: 3rem;
 }
 
 .home-header h2 {
@@ -12,7 +13,6 @@
 .home-newReleases__container {
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
 }
 
 .home-newReleases__container h3 {
@@ -30,7 +30,6 @@
 .home-recentlyPlayed__container {
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
 }
 
 .home-recentlyPlayed__container h3 {

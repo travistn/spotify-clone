@@ -19,14 +19,22 @@
 .albumCard__trackInfo {
   display: flex;
   flex-direction: column;
+  width: 150px;
+  height: 50px;
   margin-top: 1rem;
   gap: 0.7rem;
 }
 
 .albumCard__trackInfo h4 {
   color: white;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .albumCard__trackInfo h5 {
   color: var(--color-gray);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

@@ -28,12 +28,21 @@ const Dashboard = ({ code }) => {
       .then((res) => setRecentlyPlayedTracks(res.body.items));
   }, [accessToken]);
 
+  useEffect(() => {
+    spotifyApi
+      .getNewReleases({ limit: 7, offset: 0, country: 'US' })
+      .then((res) => setNewReleases(res.body.albums.items));
+  }, [accessToken]);
+
   return (
     <>
       <div className='dashboard__container'>
         <Sidebar />
         <Routes>
-          <Route path='/' element={<Home recentlyPlayedTracks={recentlyPlayedTracks} />} />
+          <Route
+            path='/'
+            element={<Home recentlyPlayedTracks={recentlyPlayedTracks} newReleases={newReleases} />}
+          />
           <Route path='/search' element={<Search setPlayingTrack={setPlayingTrack} />} />
         </Routes>
       </div>
