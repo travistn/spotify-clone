@@ -9,6 +9,11 @@
   padding: 1rem;
 }
 
+.albumCard:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
+}
+
 .albumCard img {
   width: 150px;
   height: 150px;

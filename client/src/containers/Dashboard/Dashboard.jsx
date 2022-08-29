@@ -51,6 +51,7 @@ const Dashboard = ({ code }) => {
                 recentlyPlayedTracks={recentlyPlayedTracks}
                 newReleases={newReleases}
                 myTopArtists={myTopArtists}
+                setPlayingTrack={setPlayingTrack}
               />
             }
           />
