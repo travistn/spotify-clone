@@ -8,14 +8,15 @@ import useAuth from '../../hooks/useAuth';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 import Search from '../Search/Search';
 import Home from '../Home/Home';
+import Album from '../Album/Album';
 
 const Dashboard = ({ code }) => {
   const accessToken = useAuth(code);
 
   const [playingTrack, setPlayingTrack] = useState();
-  const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState();
-  const [newReleases, setNewReleases] = useState();
-  const [myTopArtists, setMyTopArtists] = useState();
+  const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([]);
+  const [newReleases, setNewReleases] = useState([]);
+  const [myTopArtists, setMyTopArtists] = useState([]);
 
   useEffect(() => {
     if (!accessToken) return;
@@ -56,6 +57,7 @@ const Dashboard = ({ code }) => {
             }
           />
           <Route path='/search' element={<Search setPlayingTrack={setPlayingTrack} />} />
+          <Route path='/album/:id' element={<Album />} />
         </Routes>
       </div>
       <Player accessToken={accessToken} track={playingTrack} />

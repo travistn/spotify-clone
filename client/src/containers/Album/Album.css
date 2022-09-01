@@ -1,0 +1,38 @@
+.album__container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.album__header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.album__header img {
+  width: 250px;
+}
+
+.album__header-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.album__header-details h5 {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.album__header-details h3 {
+  font-size: 80px;
+}
+
+.album__header-details span {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 2rem;
+}
