@@ -2,6 +2,13 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  margin-bottom: 6rem;
+
+  overflow-y: scroll;
+}
+
+.album__container::-webkit-scrollbar {
+  display: none;
 }
 
 .album__header {
@@ -11,7 +18,7 @@
   gap: 2rem;
 }
 
-.album__header img {
+.album-image {
   width: 250px;
 }
 
@@ -32,7 +39,103 @@
 }
 
 .album__header-details span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   font-size: 13px;
   font-weight: 700;
   margin-top: 2rem;
+  gap: 1rem;
+}
+
+.album-artistImage {
+  width: 30px;
+  border-radius: 100px;
+}
+
+.album__tracks {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  margin-top: 3rem;
+}
+
+.album__tracks-header {
+  display: flex;
+  flex-direction: row;
+  color: #a5a5a5;
+  gap: 0.5rem;
+  border-bottom: 1px solid #1d1f1f;
+  padding-bottom: 0.5rem;
+}
+
+.album__tracks-header p {
+  margin-left: 1rem;
+}
+
+.album__tracks-clock {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.album__tracks-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1.2rem;
+  border-radius: 6px;
+  height: 60px;
+  color: #a5a5a5;
+}
+
+.album__tracks-list:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
+}
+
+.album-trackNumber {
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
+.album__tracks-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.7rem;
+  gap: 0.5rem;
+}
+
+.album-trackName {
+  color: white;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.album-trackArtist {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.album_trackTime {
+  margin-left: auto;
+  margin-right: 1rem;
+  font-size: 14px;
+}
+
+.album__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 2rem;
+}
+
+.album-releaseDate {
+  color: #a5a5a5;
+  font-size: 14px;
+}
+
+.album-copyright {
+  color: #a5a5a5;
+  font-size: 14px;
 }
