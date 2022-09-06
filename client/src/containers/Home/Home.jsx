@@ -3,6 +3,7 @@ import React from 'react';
 import './Home.css';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
 import TopArtistCard from '../../components/TopArtistCard/TopArtistCard';
+import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
 const Home = ({ recentlyPlayedTracks, newReleases, myTopArtists, setPlayingTrack }) => {
   const chooseTrack = (track) => {
@@ -11,6 +12,7 @@ const Home = ({ recentlyPlayedTracks, newReleases, myTopArtists, setPlayingTrack
 
   return (
     <div className='home__container'>
+      <PageNavigation />
       <div className='home-header'>
         <h2>Good afternoon</h2>
       </div>

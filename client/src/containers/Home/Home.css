@@ -11,6 +11,10 @@
   display: none;
 }
 
+.home-header {
+  margin-top: -1rem;
+}
+
 .home-header h2 {
   color: white;
   font-size: 30px;

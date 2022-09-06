@@ -1,0 +1,15 @@
+.pageNavigation {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.pageNavigation-icon {
+  width: 35px;
+  height: 35px;
+  padding: 0.2rem;
+  border-radius: 100px;
+  color: var(--color-gray);
+  background-color: black;
+  cursor: pointer;
+}

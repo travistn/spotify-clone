@@ -1,7 +1,9 @@
 .searchBar {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   margin-top: 1rem;
+  gap: 1.5rem;
+  width: 500px;
 }
 
 .searchBar input {

@@ -4,8 +4,9 @@ import { BsClock } from 'react-icons/bs';
 
 import './Album.css';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
+import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
-const Album = () => {
+const Album = ({ setPlayingTrack }) => {
   const { id } = useParams();
   const [album, setAlbum] = useState();
   const [artistImage, setArtistImage] = useState();
@@ -13,7 +14,7 @@ const Album = () => {
   const releaseDate = new Date(album?.release_date).toLocaleString('default', {
     month: 'long',
     year: 'numeric',
-    day: '2-digit',
+    day: 'numeric',
   });
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const Album = () => {
 
   return (
     <div className='album__container'>
+      <PageNavigation />
       <div className='album__header'>
         <img src={album?.images[0].url} alt='album-cover' className='album-image' />
         <div className='album__header-details'>
@@ -50,7 +52,7 @@ const Album = () => {
           <BsClock className='album__tracks-clock' />
         </div>
         {album?.tracks.items.map((trackList) => (
-          <div className='album__tracks-list'>
+          <div className='album__tracks-list' onClick={() => setPlayingTrack(trackList)}>
             <p className='album-trackNumber'>{trackList?.track_number}</p>
             <div className='album__tracks-info'>
               <h4 className='album-trackName'>{trackList?.name}</h4>
