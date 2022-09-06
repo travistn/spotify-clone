@@ -9,6 +9,7 @@ import { spotifyApi } from '../../reuseables/SpotifyApi';
 import Search from '../Search/Search';
 import Home from '../Home/Home';
 import Album from '../Album/Album';
+import Artist from '../Artist/Artist';
 
 const Dashboard = ({ code }) => {
   const accessToken = useAuth(code);
@@ -57,7 +58,8 @@ const Dashboard = ({ code }) => {
             }
           />
           <Route path='/search' element={<Search setPlayingTrack={setPlayingTrack} />} />
-          <Route path='/album/:id' element={<Album />} />
+          <Route path='/album/:id' element={<Album setPlayingTrack={setPlayingTrack} />} />
+          <Route path='/artist/:id' element={<Artist />} />
         </Routes>
       </div>
       <Player accessToken={accessToken} track={playingTrack} />
