@@ -3,12 +3,6 @@
   flex-direction: column;
   padding: 2rem;
   margin-bottom: 6rem;
-
-  overflow-y: scroll;
-}
-
-.album__container::-webkit-scrollbar {
-  display: none;
 }
 
 .album__header {

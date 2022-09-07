@@ -1,14 +1,8 @@
 .artist__container {
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 1rem; */
-  width: 100%;
-
-  overflow-y: scroll;
-}
-
-.artist__container::-webkit-scrollbar {
-  display: none;
+  margin-bottom: 6rem;
+  width: 88%;
 }
 
 .artist__header {
@@ -83,4 +77,22 @@
 .artist-topTrackTime {
   color: #a5a5a5;
   margin-left: auto;
+}
+
+.artist-relatedArtists__container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.artist-relatedArtists__container h4 {
+  font-size: 22px;
+  color: white;
+}
+
+.artist-relatedArtists {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  gap: 2rem;
 }

@@ -1,6 +1,8 @@
 .search__container {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  margin-bottom: 6rem;
 }
 
 .searchBar__container {
@@ -12,7 +14,7 @@
 .search-results {
   margin-top: 2rem;
   margin-left: 3rem;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .search-results::-webkit-scrollbar {

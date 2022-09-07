@@ -3,12 +3,8 @@
   flex-direction: column;
   padding: 2rem;
   gap: 3rem;
-  margin-bottom: 6rem;
-  overflow-y: scroll;
-}
 
-.home__container::-webkit-scrollbar {
-  display: none;
+  margin-bottom: 6rem;
 }
 
 .home-header {
