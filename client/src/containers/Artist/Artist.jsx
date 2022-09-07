@@ -5,17 +5,27 @@ import { spotifyApi } from '../../reuseables/SpotifyApi';
 import './Artist.css';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
+import AlbumCard from '../../components/AlbumCard/AlbumCard';
 
-const Artist = () => {
+const Artist = ({ setPlayingTrack }) => {
   const [artist, setArtist] = useState();
+  const [artistAlbums, setArtistAlbums] = useState();
   const [artistTopTracks, setartistTopTracks] = useState();
   const [relatedArtists, setRelatedArtists] = useState();
 
   const [showMore, setShowMore] = useState(false);
   const { id } = useParams();
 
+  const chooseTrack = (track) => {
+    setPlayingTrack(track);
+  };
+
   useEffect(() => {
     spotifyApi.getArtist(id).then((res) => setArtist(res.body));
+  }, [id]);
+
+  useEffect(() => {
+    spotifyApi.getArtistAlbums(id, { limit: 7 }).then((res) => setArtistAlbums(res.body.items));
   }, [id]);
 
   useEffect(() => {
@@ -52,8 +62,16 @@ const Artist = () => {
           </p>
         </ol>
       </div>
+      <div className='artist-discography__container'>
+        <h4 className='artist-discography-header'>Discography</h4>
+        <div className='artist-discography'>
+          {artistAlbums?.map((album) => (
+            <AlbumCard album={album} chooseTrack={chooseTrack} />
+          ))}
+        </div>
+      </div>
       <div className='artist-relatedArtists__container'>
-        <h4>Related Artists</h4>
+        <h4 className='artist-relatedArtists-header'>Related Artists</h4>
         <div className='artist-relatedArtists'>
           {relatedArtists?.map((artist) => (
             <ArtistCard artist={artist} />

@@ -91,13 +91,31 @@
   color: white;
 }
 
+.artist-discography__container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.artist-discography-header {
+  color: white;
+  font-size: 22px;
+}
+
+.artist-discography {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 .artist-relatedArtists__container {
   display: flex;
   flex-direction: column;
   padding: 2rem;
 }
 
-.artist-relatedArtists__container h4 {
+.artist-relatedArtists-header {
   font-size: 22px;
   color: white;
 }
