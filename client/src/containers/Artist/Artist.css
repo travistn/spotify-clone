@@ -35,6 +35,7 @@
 
 .artist-topTracks__container {
   padding: 2rem;
+  width: 1150px;
 }
 
 .artist-topTracks__container h4 {
@@ -44,8 +45,7 @@
 
 .artist__topTracks {
   margin-top: 2rem;
-  margin-left: 2rem;
-  width: 1100px;
+  margin-left: 1rem;
 
   list-style: none;
   counter-reset: track;
@@ -56,7 +56,10 @@
   flex-direction: row;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  height: 60px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   counter-increment: track;
 }
@@ -64,6 +67,11 @@
 .artist-topTrack::before {
   content: counter(track);
   color: white;
+}
+
+.artist-topTrack:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
 }
 
 .artist-topTrack img {
@@ -77,6 +85,7 @@
 .artist-topTrackTime {
   color: #a5a5a5;
   margin-left: auto;
+  font-size: 14px;
 }
 
 .artist__topTracks-showMore {
@@ -85,6 +94,7 @@
   font-weight: 700;
   cursor: pointer;
   text-transform: uppercase;
+  margin-top: 1rem;
 }
 
 .artist__topTracks-showMore:hover {

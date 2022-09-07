@@ -49,7 +49,7 @@ const Artist = ({ setPlayingTrack }) => {
         <h4>Popular</h4>
         <ol className='artist__topTracks'>
           {(showMore ? artistTopTracks : artistTopTracks?.slice(0, 5))?.map((track) => (
-            <li className='artist-topTrack'>
+            <li className='artist-topTrack' onClick={() => setPlayingTrack(track)}>
               <img src={track?.album.images[0].url} alt='album' />
               <p className='artist-topTrackName'>{track?.name}</p>
               <p className='artist-topTrackTime'>
