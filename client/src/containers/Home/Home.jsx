@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Home.css';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
-import TopArtistCard from '../../components/TopArtistCard/TopArtistCard';
+import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
 const Home = ({ recentlyPlayedTracks, newReleases, myTopArtists, setPlayingTrack }) => {
@@ -28,7 +28,7 @@ const Home = ({ recentlyPlayedTracks, newReleases, myTopArtists, setPlayingTrack
         <h3>Your favorite artists</h3>
         <div className='home-topArtist'>
           {myTopArtists?.map((artist) => (
-            <TopArtistCard artist={artist} key={artist?.id} />
+            <ArtistCard artist={artist} key={artist?.id} />
           ))}
         </div>
       </div>
