@@ -4,10 +4,12 @@ import { spotifyApi } from '../../reuseables/SpotifyApi';
 
 import './Artist.css';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
+import ArtistCard from '../../components/ArtistCard/ArtistCard';
 
 const Artist = () => {
   const [artist, setArtist] = useState();
   const [artistTopTracks, setartistTopTracks] = useState();
+  const [relatedArtists, setRelatedArtists] = useState();
   const { id } = useParams();
 
   useEffect(() => {
@@ -20,12 +22,18 @@ const Artist = () => {
       .then((res) => setartistTopTracks(res.body.tracks.slice(0, 5)));
   }, [id]);
 
+  useEffect(() => {
+    spotifyApi
+      .getArtistRelatedArtists(id)
+      .then((res) => setRelatedArtists(res.body.artists.slice(0, 7)));
+  }, [id]);
+
   return (
     <div className='artist__container'>
       <div className='artist__header' style={{ backgroundImage: `url(${artist?.images[0].url})` }}>
         <PageNavigation />
         <h2>{artist?.name}</h2>
-        <h5>Followers: {artist?.followers.total.toLocaleString()}</h5>
+        <h5>{artist?.followers.total.toLocaleString()} followers</h5>
       </div>
       <div className='artist-topTracks__container'>
         <h4>Popular</h4>
@@ -41,7 +49,14 @@ const Artist = () => {
           ))}
         </ol>
       </div>
-      <div>test</div>
+      <div className='artist-relatedArtists__container'>
+        <h4>Related Artists</h4>
+        <div className='artist-relatedArtists'>
+          {relatedArtists?.map((artist) => (
+            <ArtistCard artist={artist} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
