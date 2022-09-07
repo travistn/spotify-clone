@@ -8,7 +8,7 @@ const ArtistCard = ({ artist }) => {
 
   return (
     <div className='artistCard' onClick={() => navigate(`/artist/${artist?.id}`)}>
-      <img src={artist?.images[0].url} alt='artist-cover' />
+      <img src={artist?.images[0]?.url} alt='artist-cover' />
       <div className='artistCard__info'>
         <h4>{artist?.name}</h4>
         <h5>{artist?.type}</h5>
