@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import './Dashboard.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
@@ -13,6 +13,7 @@ import Artist from '../Artist/Artist';
 
 const Dashboard = ({ code }) => {
   const accessToken = useAuth(code);
+  const location = useLocation();
 
   const [playingTrack, setPlayingTrack] = useState();
   const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([]);
@@ -40,6 +41,10 @@ const Dashboard = ({ code }) => {
   useEffect(() => {
     spotifyApi.getMyTopArtists({ limit: 7 }).then((res) => setMyTopArtists(res.body.items));
   }, [accessToken]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <>
