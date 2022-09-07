@@ -10,6 +10,8 @@ const Artist = () => {
   const [artist, setArtist] = useState();
   const [artistTopTracks, setartistTopTracks] = useState();
   const [relatedArtists, setRelatedArtists] = useState();
+
+  const [showMore, setShowMore] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -17,9 +19,7 @@ const Artist = () => {
   }, [id]);
 
   useEffect(() => {
-    spotifyApi
-      .getArtistTopTracks(id, 'US')
-      .then((res) => setartistTopTracks(res.body.tracks.slice(0, 5)));
+    spotifyApi.getArtistTopTracks(id, 'US').then((res) => setartistTopTracks(res.body.tracks));
   }, [id]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Artist = () => {
       <div className='artist-topTracks__container'>
         <h4>Popular</h4>
         <ol className='artist__topTracks'>
-          {artistTopTracks?.map((track) => (
+          {(showMore ? artistTopTracks : artistTopTracks?.slice(0, 5))?.map((track) => (
             <li className='artist-topTrack'>
               <img src={track?.album.images[0].url} alt='album' />
               <p className='artist-topTrackName'>{track?.name}</p>
@@ -47,6 +47,9 @@ const Artist = () => {
               </p>
             </li>
           ))}
+          <p className='artist__topTracks-showMore' onClick={() => setShowMore(!showMore)}>
+            {showMore ? 'Show Less' : 'See More'}
+          </p>
         </ol>
       </div>
       <div className='artist-relatedArtists__container'>

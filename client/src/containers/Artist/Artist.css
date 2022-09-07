@@ -79,6 +79,18 @@
   margin-left: auto;
 }
 
+.artist__topTracks-showMore {
+  color: #a5a5a5;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.artist__topTracks-showMore:hover {
+  color: white;
+}
+
 .artist-relatedArtists__container {
   display: flex;
   flex-direction: column;
