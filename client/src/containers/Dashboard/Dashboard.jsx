@@ -10,6 +10,7 @@ import Search from '../Search/Search';
 import Home from '../Home/Home';
 import Album from '../Album/Album';
 import Artist from '../Artist/Artist';
+import UserCard from '../../components/UserCard/UserCard';
 
 const Dashboard = ({ code }) => {
   const accessToken = useAuth(code);
@@ -19,11 +20,16 @@ const Dashboard = ({ code }) => {
   const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([]);
   const [newReleases, setNewReleases] = useState([]);
   const [myTopArtists, setMyTopArtists] = useState([]);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     if (!accessToken) return;
 
     spotifyApi.setAccessToken(accessToken);
+  }, [accessToken]);
+
+  useEffect(() => {
+    spotifyApi.getMe().then((res) => setUser(res.body));
   }, [accessToken]);
 
   useEffect(() => {
@@ -50,6 +56,9 @@ const Dashboard = ({ code }) => {
     <>
       <div className='dashboard__container'>
         <Sidebar />
+        <div className='dashboard-user'>
+          <UserCard user={user} />
+        </div>
         <Routes>
           <Route
             path='/'

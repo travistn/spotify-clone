@@ -6,4 +6,12 @@
   min-height: 100vh;
 
   background-color: #121212;
+  position: relative;
+}
+
+.dashboard-user {
+  position: absolute;
+  top: 50px;
+  right: 200px;
+  z-index: 100;
 }

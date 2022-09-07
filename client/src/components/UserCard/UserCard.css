@@ -1,0 +1,33 @@
+.userCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 100px;
+  height: 32px;
+  border-radius: 23px;
+  background-color: black;
+  border-style: none;
+}
+
+.userCard:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
+}
+
+.userCard img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
+}
+
+.userCard p {
+  color: white;
+  font-weight: 700;
+  margin-left: 0.6rem;
+}
+
+.userCard-downArrow {
+  color: white;
+  font-size: 14px;
+  margin-left: 0.5rem;
+}
