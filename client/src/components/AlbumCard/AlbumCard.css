@@ -45,6 +45,10 @@
   white-space: nowrap;
 }
 
+.albumCard__trackInfo h5:hover {
+  text-decoration: underline;
+}
+
 .albumCard:hover .albumCard-playButton {
   visibility: visible;
 }
