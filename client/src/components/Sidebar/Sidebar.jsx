@@ -14,7 +14,7 @@ const linkStyles = {
   color: 'var(--color-gray)',
 };
 
-const Sidebar = () => {
+const Sidebar = ({ userPlaylists }) => {
   const navigate = useNavigate();
 
   return (
@@ -37,8 +37,13 @@ const Sidebar = () => {
           <VscLibrary className='sidebar-libraryIcon' />
           <Link to='/library' style={linkStyles}>
             Your Library
-          </Link>{' '}
+          </Link>
         </div>
+      </div>
+      <div className='sidebar-playlists'>
+        {userPlaylists?.items.map((playlist) => (
+          <p>{playlist?.name}</p>
+        ))}
       </div>
     </div>
   );

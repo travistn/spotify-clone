@@ -21,6 +21,7 @@ const Dashboard = ({ code }) => {
   const [newReleases, setNewReleases] = useState([]);
   const [myTopArtists, setMyTopArtists] = useState([]);
   const [user, setUser] = useState();
+  const [userPlaylists, setUserPlaylists] = useState();
 
   useEffect(() => {
     if (!accessToken) return;
@@ -52,10 +53,14 @@ const Dashboard = ({ code }) => {
     window.scrollTo(0, 0);
   }, [location]);
 
+  useEffect(() => {
+    spotifyApi.getUserPlaylists(user?.id).then((res) => setUserPlaylists(res.body));
+  }, [user?.id]);
+
   return (
     <>
       <div className='dashboard__container'>
-        <Sidebar />
+        <Sidebar userPlaylists={userPlaylists} />
         <div className='dashboard-user'>
           <UserCard user={user} />
         </div>
