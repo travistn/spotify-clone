@@ -14,6 +14,7 @@ const Artist = ({ setPlayingTrack }) => {
   const [relatedArtists, setRelatedArtists] = useState();
 
   const [showMore, setShowMore] = useState(false);
+  const [discographySelector, setDiscographySelector] = useState('album');
   const { id } = useParams();
 
   const chooseTrack = (track) => {
@@ -25,8 +26,13 @@ const Artist = ({ setPlayingTrack }) => {
   }, [id]);
 
   useEffect(() => {
-    spotifyApi.getArtistAlbums(id, { limit: 7 }).then((res) => setArtistAlbums(res.body.items));
-  }, [id]);
+    spotifyApi
+      .getArtistAlbums(id, {
+        limit: 7,
+        include_groups: discographySelector === 'album' ? 'album' : 'single',
+      })
+      .then((res) => setArtistAlbums(res.body.items));
+  }, [id, discographySelector]);
 
   useEffect(() => {
     spotifyApi.getArtistTopTracks(id, 'US').then((res) => setartistTopTracks(res.body.tracks));
@@ -49,7 +55,7 @@ const Artist = ({ setPlayingTrack }) => {
         <h4>Popular</h4>
         <ol className='artist__topTracks'>
           {(showMore ? artistTopTracks : artistTopTracks?.slice(0, 5))?.map((track) => (
-            <li className='artist-topTrack' onClick={() => setPlayingTrack(track)}>
+            <li className='artist-topTrack' onClick={() => setPlayingTrack(track)} key={track?.id}>
               <img src={track?.album.images[0].url} alt='album' />
               <p className='artist-topTrackName'>{track?.name}</p>
               <p className='artist-topTrackTime'>
@@ -64,6 +70,22 @@ const Artist = ({ setPlayingTrack }) => {
       </div>
       <div className='artist-discography__container'>
         <h4 className='artist-discography-header'>Discography</h4>
+        <div className='artist-discography-selector'>
+          <div
+            className={`artist-discography-album-selector ${
+              discographySelector === 'album' ? 'artist-discography-selected' : ''
+            }`}
+            onClick={() => setDiscographySelector('album')}>
+            Albums
+          </div>
+          <div
+            className={`artist-discography-single-selector ${
+              discographySelector === 'single' ? 'artist-discography-selected' : ''
+            }`}
+            onClick={() => setDiscographySelector('single')}>
+            Singles and EPs
+          </div>
+        </div>
         <div className='artist-discography'>
           {artistAlbums?.map((album) => (
             <AlbumCard album={album} chooseTrack={chooseTrack} />
@@ -74,7 +96,7 @@ const Artist = ({ setPlayingTrack }) => {
         <h4 className='artist-relatedArtists-header'>Related Artists</h4>
         <div className='artist-relatedArtists'>
           {relatedArtists?.map((artist) => (
-            <ArtistCard artist={artist} />
+            <ArtistCard artist={artist} key={artist?.id} />
           ))}
         </div>
       </div>
