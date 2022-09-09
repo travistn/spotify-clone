@@ -10,6 +10,7 @@ import Search from '../Search/Search';
 import Home from '../Home/Home';
 import Album from '../Album/Album';
 import Artist from '../Artist/Artist';
+import Playlist from '../Playlist/Playlist';
 import UserCard from '../../components/UserCard/UserCard';
 
 const Dashboard = ({ code }) => {
@@ -79,6 +80,7 @@ const Dashboard = ({ code }) => {
           <Route path='/search' element={<Search setPlayingTrack={setPlayingTrack} />} />
           <Route path='/album/:id' element={<Album setPlayingTrack={setPlayingTrack} />} />
           <Route path='/artist/:id' element={<Artist setPlayingTrack={setPlayingTrack} />} />
+          <Route path='/playlist/:id' element={<Playlist />} />
         </Routes>
       </div>
       <Player accessToken={accessToken} track={playingTrack} />
