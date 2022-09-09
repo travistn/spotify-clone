@@ -17,8 +17,6 @@ const linkStyles = {
 const Sidebar = ({ userPlaylists }) => {
   const navigate = useNavigate();
 
-  console.log(userPlaylists);
-
   return (
     <div className='sidebar__container'>
       <img src={logo} alt='spotify-logo' className='sidebar-logo' onClick={() => navigate('/')} />
