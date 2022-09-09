@@ -17,6 +17,8 @@ const linkStyles = {
 const Sidebar = ({ userPlaylists }) => {
   const navigate = useNavigate();
 
+  console.log(userPlaylists);
+
   return (
     <div className='sidebar__container'>
       <img src={logo} alt='spotify-logo' className='sidebar-logo' onClick={() => navigate('/')} />
@@ -42,7 +44,7 @@ const Sidebar = ({ userPlaylists }) => {
       </div>
       <div className='sidebar-playlists'>
         {userPlaylists?.items.map((playlist) => (
-          <p>{playlist?.name}</p>
+          <p onClick={() => navigate(`/playlist/${playlist?.id}`)}>{playlist?.name}</p>
         ))}
       </div>
     </div>
