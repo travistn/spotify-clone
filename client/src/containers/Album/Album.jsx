@@ -4,6 +4,7 @@ import { BsClock } from 'react-icons/bs';
 
 import './Album.css';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
+import { convertMilliseconds } from '../../reuseables/ConvertMilliseconds';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
 const Album = ({ setPlayingTrack }) => {
@@ -17,6 +18,10 @@ const Album = ({ setPlayingTrack }) => {
     day: 'numeric',
   });
 
+  const albumDuration = album?.tracks.items.reduce((total, track) => {
+    return total + track?.duration_ms;
+  }, 0);
+
   useEffect(() => {
     spotifyApi.getAlbum(id).then((res) => setAlbum(res.body));
   }, [id]);
@@ -26,6 +31,8 @@ const Album = ({ setPlayingTrack }) => {
       .getArtist(album?.artists[0].id)
       .then((res) => setArtistImage(res.body.images[0].url));
   });
+
+  console.log(album);
 
   return (
     <div className='album__container'>
@@ -41,7 +48,7 @@ const Album = ({ setPlayingTrack }) => {
               .map((artist) => artist.name)
               .join(' • ')} • ${album?.release_date.substring(0, 4)} • ${
               album?.total_tracks
-            } song(s), `}
+            } song(s), • ${convertMilliseconds(albumDuration)} `}
           </span>
         </div>
       </div>
