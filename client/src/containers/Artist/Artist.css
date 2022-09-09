@@ -67,6 +67,7 @@
 .artist-topTrack::before {
   content: counter(track);
   color: white;
+  width: 30px;
 }
 
 .artist-topTrack:hover {
@@ -76,10 +77,13 @@
 
 .artist-topTrack img {
   width: 40px;
+  height: 40px;
+  margin-left: -1rem;
 }
 
 .artist-topTrackName {
   color: white;
+  width: 450px;
 }
 
 .artist-topTrackTime {
