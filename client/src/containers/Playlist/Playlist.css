@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  margin-bottom: 6rem;
 }
 
 .playlist__header {
@@ -52,4 +53,121 @@
   font-size: 13px;
   color: white;
   font-weight: 700;
+}
+
+.playlist__tracks__container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-top: 3rem;
+}
+
+.playlist__tracks-header {
+  display: flex;
+  flex-direction: row;
+  color: #a5a5a5;
+  border-bottom: 1px solid #1d1f1f;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.playlist__tracks-header p {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.playlist__tracks-header-title {
+  margin-left: 2.5rem;
+}
+
+.playlist__tracks-header-album {
+  margin-left: 31.8rem;
+}
+.playlist__tracks-header-date {
+  margin-left: 22.4rem;
+}
+
+.playlist__tracks-clock {
+  margin-left: auto;
+}
+
+.playlist__tracks {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.playlist-track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 6px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 60px;
+}
+
+.playlist-track:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
+}
+
+.playlist-trackNumber {
+  color: #a5a5a5;
+  width: 30px;
+}
+
+.playlist-trackTitle__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1.3rem;
+  gap: 1rem;
+  width: 400px;
+}
+
+.playlist-track img {
+  width: 40px;
+  height: 40px;
+}
+
+.playlist-trackTitle-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.playlist-trackTitle {
+  color: white;
+  font-size: 14px;
+}
+
+.playlist-trackArtist {
+  color: #a5a5a5;
+  font-size: 13px;
+}
+
+.playlist-track-album {
+  width: 200px;
+  font-size: 13px;
+  color: #a5a5a5;
+  margin-left: 9rem;
+  width: 400px;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.playlist-track-addedDate {
+  font-size: 14px;
+  color: #a5a5a5;
+  margin-left: 1rem;
+}
+
+.playlist-track-time {
+  font-size: 14px;
+  color: #a5a5a5;
+  margin-left: auto;
 }
