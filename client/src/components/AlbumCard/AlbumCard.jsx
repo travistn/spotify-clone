@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { BsFillPlayCircleFill } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
+import { BsPlayFill } from 'react-icons/bs';
 
 import './AlbumCard.css';
 
@@ -51,7 +51,9 @@ const AlbumCard = ({ track, recentTrack, chooseTrack, album }) => {
           {track?.artists[0].name || recentTrack?.artists[0].name || album?.artists[0].name}
         </h5>
       </div>
-      <BsFillPlayCircleFill className='albumCard-playButton' onClick={handlePlay} />
+      <div className='albumCard-playButton'>
+        <BsPlayFill color='black' onClick={handlePlay} />
+      </div>
     </div>
   );
 };
