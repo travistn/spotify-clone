@@ -30,6 +30,7 @@
 .home-newReleases {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 
@@ -47,6 +48,7 @@
 .home-topArtist {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 
@@ -64,5 +66,6 @@
 .home-recentlyPlayed {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 2rem;
 }
