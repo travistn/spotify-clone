@@ -32,8 +32,6 @@ const Album = ({ setPlayingTrack }) => {
       .then((res) => setArtistImage(res.body.images[0].url));
   });
 
-  console.log(album);
-
   return (
     <div className='album__container'>
       <PageNavigation />
