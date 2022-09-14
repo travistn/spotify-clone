@@ -23,6 +23,8 @@ const Dashboard = ({ code }) => {
   const [myTopArtists, setMyTopArtists] = useState([]);
   const [user, setUser] = useState();
   const [userPlaylists, setUserPlaylists] = useState();
+  const [saved, setSaved] = useState(false);
+  const [savedTracks, setSavedTracks] = useState();
 
   useEffect(() => {
     if (!accessToken) return;
@@ -58,6 +60,10 @@ const Dashboard = ({ code }) => {
     spotifyApi.getUserPlaylists(user?.id).then((res) => setUserPlaylists(res.body));
   }, [user?.id]);
 
+  useEffect(() => {
+    spotifyApi.getMySavedTracks().then((res) => setSavedTracks(res.body.items));
+  }, [accessToken, saved]);
+
   return (
     <>
       <div className='dashboard__container'>
@@ -80,7 +86,17 @@ const Dashboard = ({ code }) => {
           <Route path='/search' element={<Search setPlayingTrack={setPlayingTrack} />} />
           <Route path='/album/:id' element={<Album setPlayingTrack={setPlayingTrack} />} />
           <Route path='/artist/:id' element={<Artist setPlayingTrack={setPlayingTrack} />} />
-          <Route path='/playlist/:id' element={<Playlist setPlayingTrack={setPlayingTrack} />} />
+          <Route
+            path='/playlist/:id'
+            element={
+              <Playlist
+                setPlayingTrack={setPlayingTrack}
+                savedTracks={savedTracks}
+                saved={saved}
+                setSaved={setSaved}
+              />
+            }
+          />
         </Routes>
       </div>
       <Player accessToken={accessToken} track={playingTrack} />

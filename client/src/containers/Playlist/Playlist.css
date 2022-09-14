@@ -167,6 +167,26 @@
   font-size: 14px;
   color: #a5a5a5;
   margin-left: 1rem;
+  width: 200px;
+}
+
+.playlist-track-saveIcon {
+  color: #a5a5a5;
+  margin-left: 5rem;
+  visibility: hidden;
+}
+
+.playlist-track-saved {
+  fill: var(--color-green);
+  margin-left: 5rem;
+}
+
+.playlist-track-saveIcon:hover {
+  color: white;
+}
+
+.playlist-track:hover .playlist-track-saveIcon {
+  visibility: visible;
 }
 
 .playlist-track-time {

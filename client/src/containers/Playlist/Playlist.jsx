@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BsClock } from 'react-icons/bs';
+import { FiHeart } from 'react-icons/fi';
 
 import './Playlist.css';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 import { convertMilliseconds } from '../../reuseables/ConvertMilliseconds';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
-const Playlist = ({ setPlayingTrack }) => {
+const Playlist = ({ setPlayingTrack, savedTracks, saved, setSaved }) => {
   const { id } = useParams();
   const [playlist, setPlaylist] = useState();
 
@@ -21,6 +22,15 @@ const Playlist = ({ setPlayingTrack }) => {
       year: 'numeric',
       day: 'numeric',
     });
+  };
+
+  const saveTrack = (e) => {
+    spotifyApi.addToMySavedTracks([e.currentTarget.id]);
+    setSaved(!saved);
+  };
+
+  const savedTracksIncludes = (track) => {
+    return savedTracks?.map((tracks) => tracks.track.id).includes(track?.track.id);
   };
 
   useEffect(() => {
@@ -64,6 +74,13 @@ const Playlist = ({ setPlayingTrack }) => {
               </div>
               <p className='playlist-track-album'>{track?.track.album.name}</p>
               <p className='playlist-track-addedDate'>{getAddedDate(track)}</p>
+              <FiHeart
+                className={
+                  savedTracksIncludes(track) ? 'playlist-track-saved' : 'playlist-track-saveIcon'
+                }
+                id={track?.track.id}
+                onClick={saveTrack}
+              />
               <p className='playlist-track-time'>
                 {new Date(track?.track.duration_ms).toISOString().slice(14, 19)}
               </p>
