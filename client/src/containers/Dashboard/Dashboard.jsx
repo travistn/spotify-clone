@@ -23,8 +23,7 @@ const Dashboard = ({ code }) => {
   const [myTopArtists, setMyTopArtists] = useState([]);
   const [user, setUser] = useState();
   const [userPlaylists, setUserPlaylists] = useState();
-  const [saved, setSaved] = useState(false);
-  const [savedTracks, setSavedTracks] = useState();
+  const [savedTracks, setSavedTracks] = useState([]);
 
   useEffect(() => {
     if (!accessToken) return;
@@ -40,7 +39,7 @@ const Dashboard = ({ code }) => {
     spotifyApi
       .getMyRecentlyPlayedTracks({ limit: 7 })
       .then((res) => setRecentlyPlayedTracks(res.body.items));
-  }, [accessToken]);
+  }, [accessToken, location]);
 
   useEffect(() => {
     spotifyApi
@@ -62,14 +61,14 @@ const Dashboard = ({ code }) => {
 
   useEffect(() => {
     spotifyApi.getMySavedTracks().then((res) => setSavedTracks(res.body.items));
-  }, [accessToken, saved]);
+  }, [accessToken, location]);
 
   return (
     <>
       <div className='dashboard__container'>
         <Sidebar userPlaylists={userPlaylists} />
         <div className='dashboard-user'>
-          <UserCard user={user} />
+          <UserCard user={user} />;
         </div>
         <Routes>
           <Route
@@ -92,8 +91,7 @@ const Dashboard = ({ code }) => {
               <Playlist
                 setPlayingTrack={setPlayingTrack}
                 savedTracks={savedTracks}
-                saved={saved}
-                setSaved={setSaved}
+                setSavedTracks={setSavedTracks}
               />
             }
           />

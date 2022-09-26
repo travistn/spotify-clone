@@ -8,7 +8,7 @@ import { spotifyApi } from '../../reuseables/SpotifyApi';
 import { convertMilliseconds } from '../../reuseables/ConvertMilliseconds';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
-const Playlist = ({ setPlayingTrack, savedTracks, saved, setSaved }) => {
+const Playlist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
   const { id } = useParams();
   const [playlist, setPlaylist] = useState();
 
@@ -24,13 +24,20 @@ const Playlist = ({ setPlayingTrack, savedTracks, saved, setSaved }) => {
     });
   };
 
-  const saveTrack = (e) => {
-    spotifyApi.addToMySavedTracks([e.currentTarget.id]);
-    setSaved(!saved);
+  const savedTracksIncludes = (trackId) => {
+    return savedTracks?.some((tracks) => tracks.track.id === trackId);
   };
 
-  const savedTracksIncludes = (track) => {
-    return savedTracks?.map((tracks) => tracks.track.id).includes(track?.track.id);
+  const saveTrack = (e) => {
+    if (!savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi
+        .addToMySavedTracks([e.currentTarget.id])
+        .then(spotifyApi.getMySavedTracks().then((res) => setSavedTracks(res.body.items)));
+    }
+    if (savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi.removeFromMySavedTracks([e.currentTarget.id]);
+      setSavedTracks(savedTracks.filter((track) => track?.track.id !== e.currentTarget.id));
+    }
   };
 
   useEffect(() => {
@@ -63,7 +70,10 @@ const Playlist = ({ setPlayingTrack, savedTracks, saved, setSaved }) => {
         </div>
         <div className='playlist__tracks'>
           {playlist?.tracks?.items?.map((track, index) => (
-            <div className='playlist-track' onClick={() => setPlayingTrack(track?.track)}>
+            <div
+              className='playlist-track'
+              key={track?.track.id}
+              onClick={() => setPlayingTrack(track?.track)}>
               <p className='playlist-trackNumber'>{index + 1}</p>
               <div className='playlist-trackTitle__container'>
                 <img src={track?.track.album.images[0].url} alt='playlist-album-cover' />
@@ -76,7 +86,9 @@ const Playlist = ({ setPlayingTrack, savedTracks, saved, setSaved }) => {
               <p className='playlist-track-addedDate'>{getAddedDate(track)}</p>
               <FiHeart
                 className={
-                  savedTracksIncludes(track) ? 'playlist-track-saved' : 'playlist-track-saveIcon'
+                  savedTracksIncludes(track?.track.id)
+                    ? 'playlist-track-saved'
+                    : 'playlist-track-saveIcon'
                 }
                 id={track?.track.id}
                 onClick={saveTrack}
