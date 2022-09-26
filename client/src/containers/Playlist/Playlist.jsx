@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { BsClock } from 'react-icons/bs';
 import { FiHeart } from 'react-icons/fi';
 
@@ -10,6 +10,7 @@ import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
 const Playlist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [playlist, setPlaylist] = useState();
 
   const playlistDuration = playlist?.tracks.items.reduce((total, track) => {
@@ -70,19 +71,30 @@ const Playlist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
         </div>
         <div className='playlist__tracks'>
           {playlist?.tracks?.items?.map((track, index) => (
-            <div
-              className='playlist-track'
-              key={track?.track.id}
-              onClick={() => setPlayingTrack(track?.track)}>
+            <div className='playlist-track' key={track?.track.id}>
               <p className='playlist-trackNumber'>{index + 1}</p>
               <div className='playlist-trackTitle__container'>
-                <img src={track?.track.album.images[0].url} alt='playlist-album-cover' />
+                <img
+                  src={track?.track.album.images[0].url}
+                  alt='playlist-album-cover'
+                  onClick={() => setPlayingTrack(track?.track)}
+                />
                 <div className='playlist-trackTitle-content'>
-                  <p className='playlist-trackTitle'>{track?.track.name}</p>
-                  <p className='playlist-trackArtist'>{track?.track.artists[0].name}</p>
+                  <p className='playlist-trackTitle' onClick={() => setPlayingTrack(track?.track)}>
+                    {track?.track.name}
+                  </p>
+                  <p
+                    className='playlist-trackArtist'
+                    onClick={() => navigate(`/artist/${track?.track.artists[0].id}`)}>
+                    {track?.track.artists[0].name}
+                  </p>
                 </div>
               </div>
-              <p className='playlist-track-album'>{track?.track.album.name}</p>
+              <p
+                className='playlist-track-album'
+                onClick={() => navigate(`/album/${track?.track.album.id}`)}>
+                {track?.track.album.name}
+              </p>
               <p className='playlist-track-addedDate'>{getAddedDate(track)}</p>
               <FiHeart
                 className={

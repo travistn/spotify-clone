@@ -151,6 +151,10 @@
   font-size: 13px;
 }
 
+.playlist-trackArtist:hover {
+  text-decoration: underline;
+}
+
 .playlist-track-album {
   width: 200px;
   font-size: 13px;
@@ -161,6 +165,10 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.playlist-track-album:hover {
+  text-decoration: underline;
 }
 
 .playlist-track-addedDate {
