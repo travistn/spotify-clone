@@ -153,6 +153,7 @@
 
 .playlist-trackArtist:hover {
   text-decoration: underline;
+  color: white;
 }
 
 .playlist-track-album {
@@ -169,6 +170,7 @@
 
 .playlist-track-album:hover {
   text-decoration: underline;
+  color: white;
 }
 
 .playlist-track-addedDate {
