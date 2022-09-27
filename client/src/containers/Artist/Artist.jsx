@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { spotifyApi } from '../../reuseables/SpotifyApi';
+import { FiHeart } from 'react-icons/fi';
 
 import './Artist.css';
+import { spotifyApi } from '../../reuseables/SpotifyApi';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
 
-const Artist = ({ setPlayingTrack }) => {
+const Artist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
   const [artist, setArtist] = useState();
   const [artistAlbums, setArtistAlbums] = useState();
   const [artistTopTracks, setartistTopTracks] = useState();
@@ -19,6 +20,22 @@ const Artist = ({ setPlayingTrack }) => {
 
   const chooseTrack = (track) => {
     setPlayingTrack(track);
+  };
+
+  const savedTracksIncludes = (trackId) => {
+    return savedTracks?.some((tracks) => tracks.track.id === trackId);
+  };
+
+  const saveTrack = (e) => {
+    if (!savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi
+        .addToMySavedTracks([e.currentTarget.id])
+        .then(spotifyApi.getMySavedTracks().then((res) => setSavedTracks(res.body.items)));
+    }
+    if (savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi.removeFromMySavedTracks([e.currentTarget.id]);
+      setSavedTracks(savedTracks.filter((track) => track?.track.id !== e.currentTarget.id));
+    }
   };
 
   useEffect(() => {
@@ -55,9 +72,24 @@ const Artist = ({ setPlayingTrack }) => {
         <h4>Popular</h4>
         <ol className='artist__topTracks'>
           {(showMore ? artistTopTracks : artistTopTracks?.slice(0, 5))?.map((track) => (
-            <li className='artist-topTrack' onClick={() => setPlayingTrack(track)} key={track?.id}>
-              <img src={track?.album.images[0].url} alt='album' />
-              <p className='artist-topTrackName'>{track?.name}</p>
+            <li className='artist-topTrack' key={track?.id}>
+              <img
+                src={track?.album.images[0].url}
+                alt='album'
+                onClick={() => setPlayingTrack(track)}
+              />
+              <p className='artist-topTrackName' onClick={() => setPlayingTrack(track)}>
+                {track?.name}
+              </p>
+              <FiHeart
+                className={
+                  savedTracksIncludes(track?.id)
+                    ? 'artist-topTrack-saved'
+                    : 'artist-topTrack-saveIcon'
+                }
+                id={track?.id}
+                onClick={saveTrack}
+              />
               <p className='artist-topTrackTime'>
                 {new Date(track?.duration_ms).toISOString().slice(14, 19)}
               </p>

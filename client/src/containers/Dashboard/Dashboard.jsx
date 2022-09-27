@@ -93,7 +93,16 @@ const Dashboard = ({ code }) => {
               />
             }
           />
-          <Route path='/artist/:id' element={<Artist setPlayingTrack={setPlayingTrack} />} />
+          <Route
+            path='/artist/:id'
+            element={
+              <Artist
+                setPlayingTrack={setPlayingTrack}
+                savedTracks={savedTracks}
+                setSavedTracks={setSavedTracks}
+              />
+            }
+          />
           <Route
             path='/playlist/:id'
             element={
