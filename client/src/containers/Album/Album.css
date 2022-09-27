@@ -39,12 +39,22 @@
   font-size: 13px;
   font-weight: 700;
   margin-top: 2rem;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .album-artistImage {
   width: 30px;
   border-radius: 100px;
+}
+
+.album__header-artistName:hover {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.album__header-artistName + .album__header-artistName::before {
+  content: '• ';
 }
 
 .album__tracks {
@@ -107,9 +117,23 @@
   font-weight: 400;
 }
 
+.album_trackArtists {
+  display: flex;
+  flex-direction: row;
+}
+
 .album-trackArtist {
   font-size: 14px;
   font-weight: 400;
+}
+
+.album-trackArtist + .album-trackArtist::before {
+  content: ', ';
+}
+
+.album-trackArtist:hover {
+  text-decoration: underline;
+  color: white;
 }
 
 .album_trackTime {

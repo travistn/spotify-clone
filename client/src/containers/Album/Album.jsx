@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { BsClock } from 'react-icons/bs';
 
 import './Album.css';
@@ -9,6 +9,8 @@ import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
 const Album = ({ setPlayingTrack }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const [album, setAlbum] = useState();
   const [artistImage, setArtistImage] = useState();
 
@@ -30,7 +32,7 @@ const Album = ({ setPlayingTrack }) => {
     spotifyApi
       .getArtist(album?.artists[0].id)
       .then((res) => setArtistImage(res.body.images[0].url));
-  });
+  }, [album?.artists]);
 
   return (
     <div className='album__container'>
@@ -42,11 +44,16 @@ const Album = ({ setPlayingTrack }) => {
           <h3>{album?.name}</h3>
           <span>
             <img src={artistImage} alt='artist' className='album-artistImage' />
-            {`${album?.artists
-              .map((artist) => artist.name)
-              .join(' • ')} • ${album?.release_date.substring(0, 4)} • ${
+            {album?.artists.map((artist) => (
+              <p
+                className='album__header-artistName'
+                onClick={() => navigate(`/artist/${artist?.id}`)}>
+                {artist?.name}
+              </p>
+            ))}
+            {`• ${album?.release_date.substring(0, 4)} • ${
               album?.total_tracks
-            } song(s), • ${convertMilliseconds(albumDuration)} `}
+            } song(s) • ${convertMilliseconds(albumDuration)}`}
           </span>
         </div>
       </div>
@@ -57,13 +64,22 @@ const Album = ({ setPlayingTrack }) => {
           <BsClock className='album__tracks-clock' />
         </div>
         {album?.tracks.items.map((trackList) => (
-          <div className='album__tracks-list' onClick={() => setPlayingTrack(trackList)}>
+          <div className='album__tracks-list'>
             <p className='album-trackNumber'>{trackList?.track_number}</p>
             <div className='album__tracks-info'>
-              <h4 className='album-trackName'>{trackList?.name}</h4>
-              <h5 className='album-trackArtist'>
-                {trackList?.artists.map((artist) => artist?.name).join(', ')}
-              </h5>
+              <h4 className='album-trackName' onClick={() => setPlayingTrack(trackList)}>
+                {trackList?.name}
+              </h4>
+              <div className='album_trackArtists'>
+                {trackList?.artists.map((artist) => (
+                  <p
+                    className='album-trackArtist'
+                    key={artist?.id}
+                    onClick={() => navigate(`/artist/${artist?.id}`)}>
+                    {artist?.name}
+                  </p>
+                ))}
+              </div>
             </div>
             <p className='album_trackTime'>
               {new Date(trackList?.duration_ms).toISOString().slice(14, 19)}
