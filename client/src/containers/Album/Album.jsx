@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { BsClock } from 'react-icons/bs';
+import { FiHeart } from 'react-icons/fi';
 
 import './Album.css';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 import { convertMilliseconds } from '../../reuseables/ConvertMilliseconds';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
-const Album = ({ setPlayingTrack }) => {
+const Album = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -23,6 +24,22 @@ const Album = ({ setPlayingTrack }) => {
   const albumDuration = album?.tracks.items.reduce((total, track) => {
     return total + track?.duration_ms;
   }, 0);
+
+  const savedTracksIncludes = (trackId) => {
+    return savedTracks?.some((tracks) => tracks.track.id === trackId);
+  };
+
+  const saveTrack = (e) => {
+    if (!savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi
+        .addToMySavedTracks([e.currentTarget.id])
+        .then(spotifyApi.getMySavedTracks().then((res) => setSavedTracks(res.body.items)));
+    }
+    if (savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi.removeFromMySavedTracks([e.currentTarget.id]);
+      setSavedTracks(savedTracks.filter((track) => track?.track.id !== e.currentTarget.id));
+    }
+  };
 
   useEffect(() => {
     spotifyApi.getAlbum(id).then((res) => setAlbum(res.body));
@@ -81,9 +98,18 @@ const Album = ({ setPlayingTrack }) => {
                 ))}
               </div>
             </div>
-            <p className='album_trackTime'>
-              {new Date(trackList?.duration_ms).toISOString().slice(14, 19)}
-            </p>
+            <div className='album__tracks-right'>
+              <FiHeart
+                className={
+                  savedTracksIncludes(trackList?.id) ? 'album-track-saved' : 'album-track-saveIcon'
+                }
+                id={trackList?.id}
+                onClick={saveTrack}
+              />
+              <p className='album-trackTime'>
+                {new Date(trackList?.duration_ms).toISOString().slice(14, 19)}
+              </p>
+            </div>
           </div>
         ))}
       </div>

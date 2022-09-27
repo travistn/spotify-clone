@@ -136,9 +136,33 @@
   color: white;
 }
 
-.album_trackTime {
+.album__tracks-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-left: auto;
   margin-right: 1rem;
+}
+
+.album-track-saveIcon {
+  margin-right: 1rem;
+  visibility: hidden;
+}
+
+.album-track-saved {
+  fill: var(--color-green);
+  margin-right: 1rem;
+}
+
+.album-track-saveIcon:hover {
+  color: white;
+}
+
+.album__tracks-list:hover .album-track-saveIcon {
+  visibility: visible;
+}
+
+.album-trackTime {
   font-size: 14px;
 }
 
