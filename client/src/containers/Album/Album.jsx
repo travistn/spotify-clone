@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BsClock } from 'react-icons/bs';
+import { BsClock, BsPlayFill } from 'react-icons/bs';
 import { FiHeart } from 'react-icons/fi';
 
 import './Album.css';
@@ -8,12 +8,16 @@ import { spotifyApi } from '../../reuseables/SpotifyApi';
 import { convertMilliseconds } from '../../reuseables/ConvertMilliseconds';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
-const Album = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
+const Album = ({ savedTracks, setSavedTracks, chooseTrack }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [album, setAlbum] = useState();
   const [artistImage, setArtistImage] = useState();
+
+  const handlePlay = (track) => {
+    chooseTrack(track);
+  };
 
   const releaseDate = new Date(album?.release_date).toLocaleString('default', {
     month: 'long',
@@ -74,6 +78,11 @@ const Album = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
           </span>
         </div>
       </div>
+      <div className='album-play__container'>
+        <button className='album-playButton' onClick={() => chooseTrack(album)}>
+          <BsPlayFill size='32' />
+        </button>
+      </div>
       <div className='album__tracks'>
         <div className='album__tracks-header'>
           <p>#</p>
@@ -84,7 +93,7 @@ const Album = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
           <div className='album__tracks-list'>
             <p className='album-trackNumber'>{trackList?.track_number}</p>
             <div className='album__tracks-info'>
-              <h4 className='album-trackName' onClick={() => setPlayingTrack(trackList)}>
+              <h4 className='album-trackName' onClick={() => handlePlay(trackList)}>
                 {trackList?.name}
               </h4>
               <div className='album_trackArtists'>

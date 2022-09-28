@@ -57,6 +57,19 @@
   content: '• ';
 }
 
+.album-play__container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.5rem;
+}
+
+.album-playButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: var(--color-green);
+}
+
 .album__tracks {
   display: flex;
   flex-direction: column;

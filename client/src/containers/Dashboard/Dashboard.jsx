@@ -25,6 +25,10 @@ const Dashboard = ({ code }) => {
   const [userPlaylists, setUserPlaylists] = useState();
   const [savedTracks, setSavedTracks] = useState([]);
 
+  const chooseTrack = (track) => {
+    setPlayingTrack(track);
+  };
+
   useEffect(() => {
     if (!accessToken) return;
 
@@ -78,7 +82,7 @@ const Dashboard = ({ code }) => {
                 recentlyPlayedTracks={recentlyPlayedTracks}
                 newReleases={newReleases}
                 myTopArtists={myTopArtists}
-                setPlayingTrack={setPlayingTrack}
+                chooseTrack={chooseTrack}
               />
             }
           />
@@ -87,9 +91,9 @@ const Dashboard = ({ code }) => {
             path='/album/:id'
             element={
               <Album
-                setPlayingTrack={setPlayingTrack}
                 savedTracks={savedTracks}
                 setSavedTracks={setSavedTracks}
+                chooseTrack={chooseTrack}
               />
             }
           />
