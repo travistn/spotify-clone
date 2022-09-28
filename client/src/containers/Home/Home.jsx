@@ -5,11 +5,7 @@ import AlbumCard from '../../components/AlbumCard/AlbumCard';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
-const Home = ({ recentlyPlayedTracks, newReleases, myTopArtists, setPlayingTrack }) => {
-  const chooseTrack = (track) => {
-    setPlayingTrack(track);
-  };
-
+const Home = ({ recentlyPlayedTracks, newReleases, myTopArtists, chooseTrack }) => {
   return (
     <div className='home__container'>
       <PageNavigation />
