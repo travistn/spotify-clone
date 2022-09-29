@@ -5,8 +5,19 @@ import './Player.css';
 
 const Player = ({ accessToken, track }) => {
   const [play, setPlay] = useState(false);
+  const [trackUri, setTrackUri] = useState([]);
 
-  useEffect(() => setPlay(true), [track?.uri]);
+  useEffect(() => {
+    const getTrackUri = (track) => {
+      if (track?.uri) setTrackUri(track?.uri);
+
+      if (track?.length > 1) setTrackUri(track?.map((tracks) => tracks?.uri));
+    };
+
+    getTrackUri(track);
+  }, [track]);
+
+  useEffect(() => setPlay(true), [track]);
 
   if (!accessToken) return null;
   return (
@@ -18,7 +29,7 @@ const Player = ({ accessToken, track }) => {
           if (!state.isPlaying) setPlay(false);
         }}
         play={play}
-        uris={track?.uri ? [track?.uri] : []}
+        uris={track ? trackUri : []}
         styles={{
           bgColor: '#181818',
           color: 'white',

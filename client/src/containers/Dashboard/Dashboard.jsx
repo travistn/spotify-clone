@@ -104,6 +104,7 @@ const Dashboard = ({ code }) => {
                 setPlayingTrack={setPlayingTrack}
                 savedTracks={savedTracks}
                 setSavedTracks={setSavedTracks}
+                chooseTrack={chooseTrack}
               />
             }
           />

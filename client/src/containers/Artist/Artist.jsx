@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FiHeart } from 'react-icons/fi';
+import { BsPlayFill } from 'react-icons/bs';
 
 import './Artist.css';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
@@ -8,7 +9,7 @@ import PageNavigation from '../../components/PageNavigation/PageNavigation';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
 
-const Artist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
+const Artist = ({ savedTracks, setSavedTracks, chooseTrack }) => {
   const [artist, setArtist] = useState();
   const [artistAlbums, setArtistAlbums] = useState();
   const [artistTopTracks, setartistTopTracks] = useState();
@@ -17,10 +18,6 @@ const Artist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
   const [showMore, setShowMore] = useState(false);
   const [discographySelector, setDiscographySelector] = useState('album');
   const { id } = useParams();
-
-  const chooseTrack = (track) => {
-    setPlayingTrack(track);
-  };
 
   const savedTracksIncludes = (trackId) => {
     return savedTracks?.some((tracks) => tracks.track.id === trackId);
@@ -68,6 +65,11 @@ const Artist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
         <h2>{artist?.name}</h2>
         <h5>{artist?.followers.total.toLocaleString()} followers</h5>
       </div>
+      <div className='artist-play__container'>
+        <button className='artist-playButton' onClick={() => chooseTrack(artistTopTracks)}>
+          <BsPlayFill size='34' />
+        </button>
+      </div>
       <div className='artist-topTracks__container'>
         <h4>Popular</h4>
         <ol className='artist__topTracks'>
@@ -76,9 +78,9 @@ const Artist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
               <img
                 src={track?.album.images[0].url}
                 alt='album'
-                onClick={() => setPlayingTrack(track)}
+                onClick={() => chooseTrack(track)}
               />
-              <p className='artist-topTrackName' onClick={() => setPlayingTrack(track)}>
+              <p className='artist-topTrackName' onClick={() => chooseTrack(track)}>
                 {track?.name}
               </p>
               <FiHeart

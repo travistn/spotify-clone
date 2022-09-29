@@ -33,6 +33,20 @@
   position: relative;
 }
 
+.artist-play__container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+}
+
+.artist-playButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: var(--color-green);
+}
+
 .artist-topTracks__container {
   padding: 2rem;
   width: 1150px;
