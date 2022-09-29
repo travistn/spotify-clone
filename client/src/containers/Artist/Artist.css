@@ -38,6 +38,7 @@
   flex-direction: row;
   margin-top: 1.5rem;
   margin-left: 2rem;
+  height: 70px;
 }
 
 .artist-playButton {
@@ -45,6 +46,11 @@
   height: 60px;
   border-radius: 50px;
   background-color: var(--color-green);
+}
+
+.artist-playButton:hover {
+  width: 62px;
+  height: 62px;
 }
 
 .artist-topTracks__container {
@@ -58,7 +64,7 @@
 }
 
 .artist__topTracks {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   margin-left: 1rem;
 
   list-style: none;
