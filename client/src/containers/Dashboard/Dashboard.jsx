@@ -101,7 +101,6 @@ const Dashboard = ({ code }) => {
             path='/artist/:id'
             element={
               <Artist
-                setPlayingTrack={setPlayingTrack}
                 savedTracks={savedTracks}
                 setSavedTracks={setSavedTracks}
                 chooseTrack={chooseTrack}
@@ -112,9 +111,9 @@ const Dashboard = ({ code }) => {
             path='/playlist/:id'
             element={
               <Playlist
-                setPlayingTrack={setPlayingTrack}
                 savedTracks={savedTracks}
                 setSavedTracks={setSavedTracks}
+                chooseTrack={chooseTrack}
               />
             }
           />

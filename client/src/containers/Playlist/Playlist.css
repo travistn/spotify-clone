@@ -55,11 +55,30 @@
   font-weight: 700;
 }
 
+.playlist-play__container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.5rem;
+  height: 70px;
+}
+
+.playlist-playButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  background-color: var(--color-green);
+}
+
+.playlist-playButton:hover {
+  width: 62px;
+  height: 62px;
+}
+
 .playlist__tracks__container {
   display: flex;
   flex-direction: column;
   width: 95%;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .playlist__tracks-header {

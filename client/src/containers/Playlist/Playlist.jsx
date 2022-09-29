@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BsClock } from 'react-icons/bs';
+import { BsClock, BsPlayFill } from 'react-icons/bs';
 import { FiHeart } from 'react-icons/fi';
 
 import './Playlist.css';
@@ -8,7 +8,7 @@ import { spotifyApi } from '../../reuseables/SpotifyApi';
 import { convertMilliseconds } from '../../reuseables/ConvertMilliseconds';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
-const Playlist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
+const Playlist = ({ savedTracks, setSavedTracks, chooseTrack }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [playlist, setPlaylist] = useState();
@@ -61,6 +61,11 @@ const Playlist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
           </div>
         </div>
       </div>
+      <div className='playlist-play__container'>
+        <button className='playlist-playButton' onClick={() => chooseTrack(playlist)}>
+          <BsPlayFill size='32' />
+        </button>
+      </div>
       <div className='playlist__tracks__container'>
         <div className='playlist__tracks-header'>
           <p>#</p>
@@ -77,10 +82,10 @@ const Playlist = ({ setPlayingTrack, savedTracks, setSavedTracks }) => {
                 <img
                   src={track?.track.album.images[0].url}
                   alt='playlist-album-cover'
-                  onClick={() => setPlayingTrack(track?.track)}
+                  onClick={() => chooseTrack(track?.track)}
                 />
                 <div className='playlist-trackTitle-content'>
-                  <p className='playlist-trackTitle' onClick={() => setPlayingTrack(track?.track)}>
+                  <p className='playlist-trackTitle' onClick={() => chooseTrack(track?.track)}>
                     {track?.track.name}
                   </p>
                   <p
