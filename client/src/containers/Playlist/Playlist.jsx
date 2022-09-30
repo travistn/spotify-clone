@@ -6,6 +6,7 @@ import { FiHeart } from 'react-icons/fi';
 import './Playlist.css';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 import { convertMilliseconds } from '../../reuseables/ConvertMilliseconds';
+import { getAddedDate } from '../../reuseables/GetAddedDate';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 
 const Playlist = ({ savedTracks, setSavedTracks, chooseTrack }) => {
@@ -16,14 +17,6 @@ const Playlist = ({ savedTracks, setSavedTracks, chooseTrack }) => {
   const playlistDuration = playlist?.tracks.items.reduce((total, track) => {
     return total + track?.track.duration_ms;
   }, 0);
-
-  const getAddedDate = (track) => {
-    return new Date(track?.added_at).toLocaleString('default', {
-      month: 'long',
-      year: 'numeric',
-      day: 'numeric',
-    });
-  };
 
   const savedTracksIncludes = (trackId) => {
     return savedTracks?.some((tracks) => tracks.track.id === trackId);
