@@ -119,7 +119,17 @@ const Dashboard = ({ code }) => {
             }
           />
           <Route path='/collection'>
-            <Route path='tracks' element={<LikedSongs user={user} savedTracks={savedTracks} />} />
+            <Route
+              path='tracks'
+              element={
+                <LikedSongs
+                  user={user}
+                  savedTracks={savedTracks}
+                  setSavedTracks={setSavedTracks}
+                  chooseTrack={chooseTrack}
+                />
+              }
+            />
           </Route>
         </Routes>
       </div>

@@ -55,3 +55,141 @@
   border-radius: 100px;
   margin-right: 0.4rem;
 }
+
+.likedSongs__tracks__container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.likedSongs__tracks-header {
+  display: flex;
+  flex-direction: row;
+  color: #a5a5a5;
+  border-bottom: 1px solid #1d1f1f;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.likedSongs__tracks-header p {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.likedSongs__tracks-header-title {
+  margin-left: 2.5rem;
+}
+
+.likedSongs__tracks-header-album {
+  margin-left: 31.8rem;
+}
+
+.likedSongs__tracks-header-date {
+  margin-left: 22.4rem;
+}
+
+.likedSongs__tracks-clock {
+  margin-left: auto;
+}
+
+.likedSongs__tracks {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.likedSongs-track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 6px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 60px;
+}
+
+.likedSongs-track:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
+}
+
+.likedSongs-trackNumber {
+  color: #a5a5a5;
+  width: 30px;
+}
+
+.likedSongs-trackTitle__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1.3rem;
+  gap: 1rem;
+  width: 400px;
+}
+
+.likedSongs-track img {
+  width: 40px;
+  height: 40px;
+}
+
+.likedSongs-trackTitle-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.likedSongs-trackTitle {
+  color: white;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.likedSongs-trackArtist {
+  color: #a5a5a5;
+  font-size: 13px;
+}
+
+.likedSongs-trackArtist:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.likedSongs-track-album {
+  width: 200px;
+  font-size: 13px;
+  color: #a5a5a5;
+  margin-left: 9rem;
+  width: 400px;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.likedSongs-track-album:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.likedSongs-track-addedDate {
+  font-size: 14px;
+  color: #a5a5a5;
+  margin-left: 1rem;
+  width: 200px;
+}
+
+.likedSongs-track-saved {
+  fill: var(--color-green);
+  margin-left: 11rem;
+}
+
+.likedSongs-track-time {
+  font-size: 14px;
+  color: #a5a5a5;
+  margin-left: auto;
+}
