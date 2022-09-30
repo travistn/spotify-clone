@@ -7,18 +7,11 @@ import './LikedSongs.css';
 import PageNavigation from '../../components/PageNavigation/PageNavigation';
 import likedSongsIcon from '../../assets/likedSongs-icon.png';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
+import { getAddedDate } from '../../reuseables/GetAddedDate';
 
 const LikedSongs = ({ user, savedTracks, setSavedTracks, chooseTrack }) => {
   const navigate = useNavigate();
   const [likedTracks, setLikedTracks] = useState();
-
-  const getAddedDate = (track) => {
-    return new Date(track?.added_at).toLocaleString('default', {
-      month: 'long',
-      year: 'numeric',
-      day: 'numeric',
-    });
-  };
 
   const unsaveTrack = (e) => {
     spotifyApi.removeFromMySavedTracks([e.currentTarget.id]);
