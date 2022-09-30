@@ -12,6 +12,7 @@ import Album from '../Album/Album';
 import Artist from '../Artist/Artist';
 import Playlist from '../Playlist/Playlist';
 import UserCard from '../../components/UserCard/UserCard';
+import LikedSongs from '../LikedSongs/LikedSongs';
 
 const Dashboard = ({ code }) => {
   const accessToken = useAuth(code);
@@ -72,7 +73,7 @@ const Dashboard = ({ code }) => {
       <div className='dashboard__container'>
         <Sidebar userPlaylists={userPlaylists} />
         <div className='dashboard-user'>
-          <UserCard user={user} />;
+          <UserCard user={user} />
         </div>
         <Routes>
           <Route
@@ -117,6 +118,9 @@ const Dashboard = ({ code }) => {
               />
             }
           />
+          <Route path='/collection'>
+            <Route path='tracks' element={<LikedSongs user={user} savedTracks={savedTracks} />} />
+          </Route>
         </Routes>
       </div>
       <Player accessToken={accessToken} track={playingTrack} />

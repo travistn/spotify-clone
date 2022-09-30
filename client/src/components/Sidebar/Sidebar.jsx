@@ -6,6 +6,7 @@ import { VscLibrary } from 'react-icons/vsc';
 
 import './Sidebar.css';
 import logo from '../../assets/logo-white.png';
+import likedSongsIcon from '../../assets/likedSongs-icon.png';
 
 const linkStyles = {
   fontSize: '15px',
@@ -39,10 +40,18 @@ const Sidebar = ({ userPlaylists }) => {
             Your Library
           </Link>
         </div>
+        <div className='sidebar-link'>
+          <img src={likedSongsIcon} className='sidebar-likedSongs-icon' alt='likedSongs-icon' />
+          <Link to='/collection/tracks' style={linkStyles}>
+            Liked Songs
+          </Link>
+        </div>
       </div>
       <div className='sidebar-playlists'>
         {userPlaylists?.items.map((playlist) => (
-          <p onClick={() => navigate(`/playlist/${playlist?.id}`)}>{playlist?.name}</p>
+          <p key={playlist?.id} onClick={() => navigate(`/playlist/${playlist?.id}`)}>
+            {playlist?.name}
+          </p>
         ))}
       </div>
     </div>
