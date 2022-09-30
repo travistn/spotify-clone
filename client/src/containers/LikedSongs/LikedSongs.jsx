@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BsClock } from 'react-icons/bs';
+import { BsClock, BsPlayFill } from 'react-icons/bs';
 import { FiHeart } from 'react-icons/fi';
 
 import './LikedSongs.css';
@@ -9,8 +9,8 @@ import likedSongsIcon from '../../assets/likedSongs-icon.png';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 
 const LikedSongs = ({ user, savedTracks, setSavedTracks, chooseTrack }) => {
-  console.log(savedTracks);
   const navigate = useNavigate();
+  const [likedTracks, setLikedTracks] = useState();
 
   const getAddedDate = (track) => {
     return new Date(track?.added_at).toLocaleString('default', {
@@ -24,6 +24,10 @@ const LikedSongs = ({ user, savedTracks, setSavedTracks, chooseTrack }) => {
     spotifyApi.removeFromMySavedTracks([e.currentTarget.id]);
     setSavedTracks(savedTracks.filter((track) => track?.track.id !== e.currentTarget.id));
   };
+
+  useEffect(() => {
+    setLikedTracks(savedTracks?.map((tracks) => tracks?.track));
+  }, [savedTracks]);
 
   return (
     <div className='likedSongs__container'>
@@ -40,6 +44,11 @@ const LikedSongs = ({ user, savedTracks, setSavedTracks, chooseTrack }) => {
             </span>
           </div>
         </div>
+      </div>
+      <div className='likedSongs-play__container'>
+        <button className='likedSongs-playButton' onClick={() => chooseTrack(likedTracks)}>
+          <BsPlayFill size='34' />
+        </button>
       </div>
       <div className='likedSongs__tracks__container'>
         <div className='likedSongs__tracks-header'>
