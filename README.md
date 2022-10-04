@@ -27,3 +27,12 @@ Users can view an artist's top songs, their albums and singles, and related arti
 Users can choose to play an artist's top song, play all of their top top songs, or play all of an album's songs.
 
 ![Artist-play](https://user-images.githubusercontent.com/42354863/193931912-6be4053f-04f0-4789-950b-3a2a440529f7.gif)
+
+### Playlist
+Users can view the playlist's songs, play a song in the playlist, play all of the songs in the playlist, and like and unlike songs in the playlist.
+
+![Playlist2](https://user-images.githubusercontent.com/42354863/193935654-eca59444-7671-40a7-bc22-7d3baf702f8e.gif)
+
+Users can navigate to a song's artist or to the song's album in the playlist.
+
+![Playlist3](https://user-images.githubusercontent.com/42354863/193935904-afbc7dc7-8f95-4cfc-8b28-94543a65005b.gif)
