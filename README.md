@@ -41,3 +41,10 @@ Users can navigate to a song's artist or to the song's album in the playlist.
 Users can play a liked songs, play all of the liked songs, and remove a song from the list.
 
 ![LikedSongs](https://user-images.githubusercontent.com/42354863/193936405-85b42734-c762-48c8-90fe-f8672df74b0d.gif)
+
+#### Technologies used to create the project:
+* React.js
+* Javascript
+* CSS
+* HTML
+
