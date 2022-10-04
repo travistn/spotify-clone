@@ -13,3 +13,9 @@ After authenticating from the login page, users will be redirected to the the da
 Users can navigate to albums, artists, recently played songs, and playlists from the dashboard.
 
 ![Dashboard-navigate2](https://user-images.githubusercontent.com/42354863/193707223-ba98c56c-49c2-415f-ad79-856e6e856f39.gif)
+
+### Album
+The album page lists the album tracks which users can select a track to play or select the whole album to play.
+
+![Album](https://user-images.githubusercontent.com/42354863/193707510-ea53c13f-6893-48fb-8a4a-9ca1a49865cf.gif)
+
