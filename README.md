@@ -22,3 +22,8 @@ The album page lists the album tracks which users can select a track to play or 
 ### Artist
 Users can view an artist's top songs, their albums and singles, and related artists.
 
+![Artist](https://user-images.githubusercontent.com/42354863/193931378-336ffb87-efb6-4930-baf9-f440addf3366.gif)
+
+Users can choose to play an artist's top song, play all of their top top songs, or play all of an album's songs.
+
+![Artist-play](https://user-images.githubusercontent.com/42354863/193931912-6be4053f-04f0-4789-950b-3a2a440529f7.gif)
