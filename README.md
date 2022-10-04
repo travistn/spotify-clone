@@ -3,7 +3,7 @@ A front-end clone of the Spotify Web player.
 
 
 ## Description
-The app consumes data from the Spotify API and tries to mimic the UI and front-end behaviours of the official Spotify Web Player as much as possible.
+The app consumes data from the [Spotify API](https://developers.themoviedb.org/3/getting-started/introduction) and tries to mimic the UI and front-end behaviours of the official Spotify Web Player as much as possible.
 
 ### Dashboard
 After authenticating from the login page, users will be redirected to the the dashboard. On the dashboard, users can view newly released music, their top artists, their recently played tracks, their playlists, their liked songs, and the search page.
