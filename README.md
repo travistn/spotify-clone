@@ -19,3 +19,6 @@ The album page lists the album tracks which users can select a track to play or 
 
 ![Album](https://user-images.githubusercontent.com/42354863/193707510-ea53c13f-6893-48fb-8a4a-9ca1a49865cf.gif)
 
+### Artist
+Users can view an artist's top songs, their albums and singles, and related artists.
+
