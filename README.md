@@ -5,6 +5,8 @@ A front-end clone of the Spotify Web player.
 ## Description
 The app consumes data from the [Spotify API](https://developers.themoviedb.org/3/getting-started/introduction) and tries to mimic the UI and front-end behaviours of the official Spotify Web Player as much as possible.
 
+## Demonstrations
+
 ### Dashboard
 After authenticating from the login page, users will be redirected to the the dashboard. On the dashboard, users can view newly released music, their top artists, their recently played tracks, their playlists, their liked songs, and the search page.
 
@@ -42,9 +44,11 @@ Users can play a liked songs, play all of the liked songs, and remove a song fro
 
 ![LikedSongs](https://user-images.githubusercontent.com/42354863/193936405-85b42734-c762-48c8-90fe-f8672df74b0d.gif)
 
-#### Technologies used to create the project:
+## Technologies Used
 * React.js
 * Javascript
 * CSS
 * HTML
+* React Router
+* Express
 
