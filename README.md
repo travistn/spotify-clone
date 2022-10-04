@@ -36,3 +36,8 @@ Users can view the playlist's songs, play a song in the playlist, play all of th
 Users can navigate to a song's artist or to the song's album in the playlist.
 
 ![Playlist3](https://user-images.githubusercontent.com/42354863/193935904-afbc7dc7-8f95-4cfc-8b28-94543a65005b.gif)
+
+### Liked Songs
+Users can play a liked songs, play all of the liked songs, and remove a song from the list.
+
+![LikedSongs](https://user-images.githubusercontent.com/42354863/193936405-85b42734-c762-48c8-90fe-f8672df74b0d.gif)
