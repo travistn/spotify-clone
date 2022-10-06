@@ -1,55 +1,66 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './Search.css';
 import Searchbar from '../../components/Searchbar/Searchbar';
-import TrackSearchResults from '../../components/TrackSearchResults/TrackSearchResults';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 
-const Search = ({ setPlayingTrack }) => {
+const Search = ({ chooseTrack }) => {
   const [search, setSearch] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchArtist, setSearchArtist] = useState();
+  const [searchSongs, setSearchSongs] = useState();
 
-  const chooseTrack = (track) => {
-    setPlayingTrack(track);
-    setSearch('');
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!search) return setSearchResults([]);
+    spotifyApi
+      .searchArtists(search, { limit: 1 })
+      .then((res) => setSearchArtist(res.body.artists.items[0]));
+  }, [search]);
 
-    let cancel = false;
-
-    spotifyApi.searchTracks(search).then((res) => {
-      if (cancel) return;
-
-      setSearchResults(
-        res.body.tracks.items.map((track) => {
-          const smallestAlbumImage = track.album.images.reduce((smallest, image) => {
-            if (image.height < smallest.height) return image;
-            return smallest;
-          }, track.album.images[0]);
-
-          return {
-            artist: track.artists[0].name,
-            title: track.name,
-            uri: track.uri,
-            albumUrl: smallestAlbumImage.url,
-          };
-        })
-      );
-    });
-    return () => (cancel = true);
+  useEffect(() => {
+    spotifyApi
+      .searchTracks(search, { limit: 4 })
+      .then((res) => setSearchSongs(res.body.tracks.items));
   }, [search]);
 
   return (
     <div className='search__container'>
-      <div className='searchBar__container'>
-        <Searchbar search={search} setSearch={setSearch} />
-      </div>
-      <div className='search-results'>
-        {searchResults.map((track) => (
-          <TrackSearchResults track={track} key={track.uri} chooseTrack={chooseTrack} />
-        ))}
+      <Searchbar search={search} setSearch={setSearch} />
+      <div className='search__topResults'>
+        <div className='search__topResults-artist'>
+          <h4>Top Result</h4>
+          <div
+            className='search__topResults-artistCard'
+            onClick={() => navigate(`/artist/${searchArtist?.id}`)}>
+            <img src={searchArtist?.images[0].url} alt='artist-profile' />
+            <h1>{searchArtist?.name}</h1>
+            <button>{searchArtist?.type}</button>
+          </div>
+        </div>
+        <div className='search__topResults-songs'>
+          <h4>Songs</h4>
+          <div className='search__topResults-songsList'>
+            {searchSongs?.map((song) => (
+              <div className='search__topResults-songCard'>
+                <img
+                  src={song?.album.images[0].url}
+                  alt='album-cover'
+                  onClick={() => chooseTrack(song)}
+                />
+                <div className='search__topResults-songCard__content'>
+                  <h5 onClick={() => chooseTrack(song)}>{song?.name}</h5>
+                  <p onClick={() => navigate(`/artist/${song?.artists[0].id}`)}>
+                    {song?.artists[0].name}
+                  </p>
+                </div>
+                <p className='search__topResults-songCard-trackTime'>
+                  {new Date(song?.duration_ms).toISOString().slice(14, 19)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

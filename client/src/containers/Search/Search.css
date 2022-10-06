@@ -1,22 +1,129 @@
 .search__container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   margin-bottom: 6rem;
+  padding: 2rem;
 }
 
-.searchBar__container {
-  margin-top: 1rem;
-  margin-left: 2rem;
-  width: 350px;
+.search__topResults {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
 }
 
-.search-results {
-  margin-top: 2rem;
+.search__topResults-artist {
+  display: flex;
+  flex-direction: column;
+}
+
+.search__topResults-artist h4 {
+  color: white;
+  font-size: 22px;
+}
+
+.search__topResults-artistCard {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  background-color: #181818;
+  height: 240px;
+  width: 450px;
+  border-radius: 6px;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+.search__topResults-artistCard:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
+}
+
+.search__topResults-artistCard img {
+  width: 90px;
+  height: 90px;
+  border-radius: 100px;
+}
+
+.search__topResults-artistCard h1 {
+  color: white;
+  font-size: 30px;
+}
+
+.search__topResults-artistCard button {
+  background-color: black;
+  color: white;
+  border-style: none;
+  width: 70px;
+  height: 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 10px;
+}
+
+.search__topResults-songs {
+  display: flex;
+  flex-direction: column;
   margin-left: 3rem;
-  overflow-y: scroll;
 }
 
-.search-results::-webkit-scrollbar {
-  display: none;
+.search__topResults-songs h4 {
+  color: white;
+  font-size: 22px;
+}
+
+.search__topResults-songsList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.6rem;
+}
+
+.search__topResults-songCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 700px;
+  height: 60px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.search__topResults-songCard:hover {
+  background-color: #2d2d2d;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.search__topResults-songCard img {
+  width: 40px;
+  height: 40px;
+}
+
+.search__topResults-songCard__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-left: 1rem;
+}
+
+.search__topResults-songCard__content h5 {
+  color: white;
+  font-size: 14px;
+}
+
+.search__topResults-songCard__content p {
+  color: #a5a5a5;
+  font-size: 13px;
+}
+
+.search__topResults-songCard__content p:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.search__topResults-songCard-trackTime {
+  color: #a5a5a5;
+  font-size: 14px;
+  margin-left: auto;
 }
