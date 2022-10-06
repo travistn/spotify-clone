@@ -25,6 +25,10 @@ const Search = ({ chooseTrack }) => {
       .then((res) => setSearchSongs(res.body.tracks.items));
   }, [search]);
 
+  useEffect(() => {
+    if (search === '') setSearchLoaded(false);
+  }, [search]);
+
   return (
     <div className='search__container'>
       <Searchbar search={search} setSearch={setSearch} setSearchLoaded={setSearchLoaded} />
