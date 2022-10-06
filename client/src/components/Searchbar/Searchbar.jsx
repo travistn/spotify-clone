@@ -3,9 +3,9 @@ import React from 'react';
 import './Searchbar.css';
 import PageNavigation from '../PageNavigation/PageNavigation';
 
-const Searchbar = ({ search, setSearch }) => {
+const Searchbar = ({ search, setSearch, setSearchLoaded }) => {
   return (
-    <form className='searchBar'>
+    <form className='searchBar' onChange={() => setSearchLoaded(true)}>
       <PageNavigation />
       <input
         type='search'
