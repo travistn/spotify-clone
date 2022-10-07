@@ -95,16 +95,20 @@ const Search = ({ chooseTrack, savedTracks, setSavedTracks }) => {
                         {song?.artists[0].name}
                       </p>
                     </div>
-                    <FiHeart
-                      className={
-                        savedTracksIncludes(song.id) ? 'search-song-saved' : 'search-song-saveIcon'
-                      }
-                      id={song.id}
-                      onClick={saveTrack}
-                    />
-                    <p className='search__topResults-songCard-trackTime'>
-                      {new Date(song?.duration_ms).toISOString().slice(14, 19)}
-                    </p>
+                    <div className='search__topResults-right'>
+                      <FiHeart
+                        className={
+                          savedTracksIncludes(song.id)
+                            ? 'search-song-saved'
+                            : 'search-song-saveIcon'
+                        }
+                        id={song.id}
+                        onClick={saveTrack}
+                      />
+                      <p className='search__topResults-songCard-trackTime'>
+                        {new Date(song?.duration_ms).toISOString().slice(14, 19)}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>

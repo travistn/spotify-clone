@@ -110,6 +110,7 @@
 .search__topResults-songCard__content h5 {
   color: white;
   font-size: 14px;
+  /* width: 200px; */
 }
 
 .search__topResults-songCard__content p {
@@ -122,15 +123,21 @@
   color: white;
 }
 
+.search__topResults-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  gap: 1rem;
+}
+
 .search-song-saveIcon {
   color: #a5a5a5;
-  margin-left: 29rem;
   visibility: hidden;
 }
 
 .search-song-saved {
   fill: var(--color-green);
-  margin-left: 29rem;
 }
 
 .search-song-saveIcon:hover {
@@ -141,7 +148,7 @@
   visibility: visible;
 }
 
-.search__topResults-songCard-trackTime {
+.search__topResults-right p {
   color: #a5a5a5;
   font-size: 14px;
   margin-left: auto;
