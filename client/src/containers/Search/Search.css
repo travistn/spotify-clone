@@ -5,6 +5,25 @@
   padding: 2rem;
 }
 
+.search__categories__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.search__categories__container h3 {
+  color: white;
+  font-size: 22px;
+}
+
+.search__categories {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 .search__topResults {
   display: flex;
   flex-direction: row;

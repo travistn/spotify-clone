@@ -7,6 +7,7 @@ import Searchbar from '../../components/Searchbar/Searchbar';
 import PlaylistCard from '../../components/PlaylistCard/PlaylistCard';
 import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
+import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 
 const Search = ({ chooseTrack, savedTracks, setSavedTracks }) => {
@@ -16,6 +17,8 @@ const Search = ({ chooseTrack, savedTracks, setSavedTracks }) => {
   const [searchPlaylists, setSearchPlaylists] = useState();
   const [searchAlbums, setSearchAlbums] = useState();
   const [searchLoaded, setSearchLoaded] = useState(false);
+
+  const [categories, setCategories] = useState();
 
   const navigate = useNavigate();
 
@@ -60,12 +63,26 @@ const Search = ({ chooseTrack, savedTracks, setSavedTracks }) => {
   }, [search]);
 
   useEffect(() => {
+    spotifyApi.getCategories({ limit: 49 }).then((res) => setCategories(res.body.categories.items));
+  }, [search]);
+
+  useEffect(() => {
     if (search === '') setSearchLoaded(false);
   }, [search]);
 
   return (
     <div className='search__container'>
       <Searchbar search={search} setSearch={setSearch} setSearchLoaded={setSearchLoaded} />
+      {!searchLoaded && (
+        <div className='search__categories__container'>
+          <h3>Browse All</h3>
+          <div className='search__categories'>
+            {categories?.map((category) => (
+              <CategoryCard category={category} />
+            ))}
+          </div>
+        </div>
+      )}
       {searchLoaded && (
         <>
           <div className='search__topResults'>
