@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 import './Search.css';
 import Searchbar from '../../components/Searchbar/Searchbar';
+import PlaylistCard from '../../components/PlaylistCard/PlaylistCard';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 
 const Search = ({ chooseTrack }) => {
   const [search, setSearch] = useState('');
   const [searchArtist, setSearchArtist] = useState();
   const [searchSongs, setSearchSongs] = useState();
+  const [searchPlaylists, setSearchPlaylists] = useState();
   const [searchLoaded, setSearchLoaded] = useState(false);
 
   const navigate = useNavigate();
@@ -23,6 +25,12 @@ const Search = ({ chooseTrack }) => {
     spotifyApi
       .searchTracks(search, { limit: 4 })
       .then((res) => setSearchSongs(res.body.tracks.items));
+  }, [search]);
+
+  useEffect(() => {
+    spotifyApi
+      .searchPlaylists(search, { limit: 7 })
+      .then((res) => setSearchPlaylists(res.body.playlists.items));
   }, [search]);
 
   useEffect(() => {
@@ -66,6 +74,16 @@ const Search = ({ chooseTrack }) => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      )}
+      {searchLoaded && (
+        <div className='search-playlists__container'>
+          <h2>Playlists</h2>
+          <div className='search-playlists'>
+            {searchPlaylists?.map((playlist) => (
+              <PlaylistCard playlist={playlist} chooseTrack={chooseTrack} />
+            ))}
           </div>
         </div>
       )}

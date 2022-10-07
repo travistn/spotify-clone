@@ -127,3 +127,21 @@
   font-size: 14px;
   margin-left: auto;
 }
+
+.search-playlists__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.search-playlists__container h2 {
+  color: white;
+  font-size: 22px;
+}
+
+.search-playlists {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  gap: 2rem;
+}
