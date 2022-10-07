@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FiHeart } from 'react-icons/fi';
 
 import './Search.css';
 import Searchbar from '../../components/Searchbar/Searchbar';
@@ -8,7 +9,7 @@ import ArtistCard from '../../components/ArtistCard/ArtistCard';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
 import { spotifyApi } from '../../reuseables/SpotifyApi';
 
-const Search = ({ chooseTrack }) => {
+const Search = ({ chooseTrack, savedTracks, setSavedTracks }) => {
   const [search, setSearch] = useState('');
   const [searchArtists, setSearchArtists] = useState();
   const [searchSongs, setSearchSongs] = useState();
@@ -17,6 +18,22 @@ const Search = ({ chooseTrack }) => {
   const [searchLoaded, setSearchLoaded] = useState(false);
 
   const navigate = useNavigate();
+
+  const savedTracksIncludes = (trackId) => {
+    return savedTracks?.some((tracks) => tracks.track.id === trackId);
+  };
+
+  const saveTrack = (e) => {
+    if (!savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi
+        .addToMySavedTracks([e.currentTarget.id])
+        .then(spotifyApi.getMySavedTracks().then((res) => setSavedTracks(res.body.items)));
+    }
+    if (savedTracksIncludes(e.currentTarget.id)) {
+      spotifyApi.removeFromMySavedTracks([e.currentTarget.id]);
+      setSavedTracks(savedTracks.filter((track) => track?.track.id !== e.currentTarget.id));
+    }
+  };
 
   useEffect(() => {
     spotifyApi
@@ -78,6 +95,13 @@ const Search = ({ chooseTrack }) => {
                         {song?.artists[0].name}
                       </p>
                     </div>
+                    <FiHeart
+                      className={
+                        savedTracksIncludes(song.id) ? 'search-song-saved' : 'search-song-saveIcon'
+                      }
+                      id={song.id}
+                      onClick={saveTrack}
+                    />
                     <p className='search__topResults-songCard-trackTime'>
                       {new Date(song?.duration_ms).toISOString().slice(14, 19)}
                     </p>

@@ -87,7 +87,16 @@ const Dashboard = ({ code }) => {
               />
             }
           />
-          <Route path='/search' element={<Search chooseTrack={chooseTrack} />} />
+          <Route
+            path='/search'
+            element={
+              <Search
+                chooseTrack={chooseTrack}
+                savedTracks={savedTracks}
+                setSavedTracks={setSavedTracks}
+              />
+            }
+          />
           <Route
             path='/album/:id'
             element={

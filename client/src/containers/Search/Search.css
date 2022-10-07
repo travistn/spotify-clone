@@ -122,6 +122,25 @@
   color: white;
 }
 
+.search-song-saveIcon {
+  color: #a5a5a5;
+  margin-left: 29rem;
+  visibility: hidden;
+}
+
+.search-song-saved {
+  fill: var(--color-green);
+  margin-left: 29rem;
+}
+
+.search-song-saveIcon:hover {
+  color: white;
+}
+
+.search__topResults-songCard:hover .search-song-saveIcon {
+  visibility: visible;
+}
+
 .search__topResults-songCard-trackTime {
   color: #a5a5a5;
   font-size: 14px;
