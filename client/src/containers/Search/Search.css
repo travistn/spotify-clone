@@ -145,3 +145,39 @@
   margin-top: 1rem;
   gap: 2rem;
 }
+
+.search-artists__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.search-artists__container h2 {
+  color: white;
+  font-size: 22px;
+}
+
+.search-artists {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  gap: 2rem;
+}
+
+.search-albums__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.search-albums__container h2 {
+  color: white;
+  font-size: 22px;
+}
+
+.search-albums {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  gap: 2rem;
+}
