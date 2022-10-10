@@ -44,6 +44,12 @@ Users can play a liked songs, play all of the liked songs, and remove a song fro
 
 ![LikedSongs](https://user-images.githubusercontent.com/42354863/193936405-85b42734-c762-48c8-90fe-f8672df74b0d.gif)
 
+### Search
+Users can browse categories and search for songs, artists, or playlists.
+
+![Search1](https://user-images.githubusercontent.com/42354863/194964658-10215ffb-f1ee-4128-9387-4aa2097617f0.gif)
+
+
 ## Technologies Used
 * React.js
 * Javascript
