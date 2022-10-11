@@ -11,6 +11,7 @@ import Home from '../Home/Home';
 import Album from '../Album/Album';
 import Artist from '../Artist/Artist';
 import Playlist from '../Playlist/Playlist';
+import Library from '../Library/Library';
 import UserCard from '../../components/UserCard/UserCard';
 import LikedSongs from '../LikedSongs/LikedSongs';
 
@@ -127,7 +128,7 @@ const Dashboard = ({ code }) => {
               />
             }
           />
-          <Route path='/collection'>
+          <Route path='/collection' element={<Library userPlaylists={userPlaylists} />}>
             <Route
               path='tracks'
               element={

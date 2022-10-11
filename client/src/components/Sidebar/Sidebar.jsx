@@ -36,7 +36,7 @@ const Sidebar = ({ userPlaylists }) => {
         </div>
         <div className='sidebar-link'>
           <VscLibrary className='sidebar-libraryIcon' />
-          <Link to='/library' style={linkStyles}>
+          <Link to='/collection' style={linkStyles}>
             Your Library
           </Link>
         </div>
