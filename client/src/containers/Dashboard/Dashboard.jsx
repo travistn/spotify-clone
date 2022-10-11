@@ -128,7 +128,8 @@ const Dashboard = ({ code }) => {
               />
             }
           />
-          <Route path='/collection' element={<Library userPlaylists={userPlaylists} />}>
+          <Route path='/collection'>
+            <Route index element={<Library userPlaylists={userPlaylists} />} />
             <Route
               path='tracks'
               element={
