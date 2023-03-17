@@ -1,9 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const app = express();
+const buildPath = path.join(__dirname, 'build');
 
 app.use(cors());
 app.use(express.json());
@@ -51,6 +53,10 @@ app.post('/refresh', async (req, res) => {
     console.log(err);
     res.sendStatus(400);
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
 
 app.listen(port, (err) => {
