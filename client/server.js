@@ -5,7 +5,6 @@ const path = require('path');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 const app = express();
-const buildPath = path.join(__dirname, 'build');
 
 app.use(cors());
 app.use(express.json());
@@ -55,8 +54,11 @@ app.post('/refresh', async (req, res) => {
   }
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(buildPath, 'index.html'));
+const root = require('path').join(__dirname, 'build');
+app.use(express.static(root));
+
+app.use('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(port, (err) => {
